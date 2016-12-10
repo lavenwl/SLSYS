@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-27 14:37:02 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.sl.wholesale.entity.hibernate.WsGoods" table="ws_goods" catalog="slsys">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="wsGoodsType" class="com.sl.wholesale.entity.hibernate.WsGoodsType" fetch="select">
+            <column name="type_id">
+                <comment>????</comment>
+            </column>
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="spec" type="string">
+            <column name="spec">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="brand" type="string">
+            <column name="brand">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="provider" type="string">
+            <column name="provider" length="256">
+                <comment>???</comment>
+            </column>
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="create_date" length="19" not-null="true">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="updateDate" type="timestamp">
+            <column name="update_date" length="19" not-null="true">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="state" type="java.lang.Integer">
+            <column name="state">
+                <comment>??????????</comment>
+            </column>
+        </property>
+        <set name="wsItems" table="ws_item" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="goods_id">
+                    <comment>??ID</comment>
+                </column>
+            </key>
+            <one-to-many class="com.sl.wholesale.entity.hibernate.WsItem" />
+        </set>
+    </class>
+</hibernate-mapping>

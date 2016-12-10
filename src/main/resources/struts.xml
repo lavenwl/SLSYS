@@ -1,10 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
-"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
- <package name="test" extends="struts-default">
- 	<action name="listuser" class="com.sl.base.user.action.UserAction" method="listUsers">
- 		<result name="success">/WEB-INF/jsp/base/user/userlist.jsp</result>
- 	</action>
- </package>
+	<!-- 动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<package name="global" extends="struts-default">
+		<default-action-ref name="notFound"/>
+		<global-results>
+			<result name="error500">/WEB-INF/jsp/500.jsp</result>
+		</global-results>
+		<global-allowed-methods>regex:.*</global-allowed-methods>
+		<global-exception-mappings>
+			<exception-mapping result="error500" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		<action name="notFound">
+			<result name="success" type="redirect">
+				<param name="location">/WEB-INF/jsp/404.jsp</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="portal" extends="struts-default">
+	<global-allowed-methods>regex:.*</global-allowed-methods>
+		<action name="login" class="com.sl.portal.login.action.LoginAction">
+			<result name="success">/WEB-INF/jsp/index.jsp</result>
+		</action>
+		<action name="index">
+			<result>/WEB-INF/jsp/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="base" extends="struts-default">
+		<global-allowed-methods>regex:.*</global-allowed-methods>
+		<action name="user" class="com.sl.base.user.action.UserAction">
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="userList">/WEB-INF/jsp/base/user/userList.jsp</result>
+			<result name="userDetail">/WEB-INF/jsp/base/user/userDetail.jsp</result>
+			<result name="userEdit">/WEB-INF/jsp/base/user/userEdit.jsp</result>
+			<result name="userSave" type="redirectAction">user!list</result>
+			<result name="userDelete" type="redirectAction">user!list</result>
+			<result name="userUpdate" type="redirectAction">user!list</result>
+			<result name="userAdd">/WEB-INF/jsp/base/user/userAdd.jsp</result>
+		</action>
+	</package>
+	
+	<package name="ws" extends="struts-default">
+	 <global-allowed-methods>regex:.*</global-allowed-methods>
+		<action name="order" class="com.sl.wholesale.order.action.OrderAction">
+			<result name="success">/WEB-INF/jsp/index.jsp</result>
+		</action>
+		<action name="goods" class="com.sl.wholesale.goods.action.GoodsAction">
+			<result name="success">/WEB-INF/jsp/index.jsp</result>
+		</action>
+		<action name="goodsType" class="com.sl.wholesale.goodstype.action.GoodsTypeAction">
+			<result name="success">/WEB-INF/jsp/index.jsp</result>
+		</action>
+	</package>
+ 
 </struts>

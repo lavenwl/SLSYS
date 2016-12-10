@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-27 14:31:25 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.sl.base.entity.hibernate.BaseUser" table="base_user" catalog="slsys">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="baseRole" class="com.sl.base.entity.hibernate.BaseRole" fetch="select">
+            <column name="role_id" not-null="true">
+                <comment>????</comment>
+            </column>
+        </many-to-one>
+        <property name="username" type="string">
+            <column name="username" length="100" not-null="true">
+                <comment>???</comment>
+            </column>
+        </property>
+        <property name="password" type="string">
+            <column name="password" not-null="true">
+                <comment>??</comment>
+            </column>
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="20">
+                <comment>???</comment>
+            </column>
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="create_date" length="19" not-null="true">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="updateDate" type="timestamp">
+            <column name="update_date" length="19" not-null="true">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="state" type="java.lang.Integer">
+            <column name="state">
+                <comment>??????????</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

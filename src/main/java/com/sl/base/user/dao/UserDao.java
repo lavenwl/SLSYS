@@ -11,7 +11,12 @@ package com.sl.base.user.dao;
 
 import java.util.List;
 
-import com.sl.base.user.entity.User;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Example;
+
+import com.sl.base.entity.hibernate.BaseUser;
+import com.sl.global.dao.BaseDao;
+import com.sl.global.entity.QueryBean;
 
 /** 
  * ClassName:UserDao <br/> 
@@ -23,65 +28,8 @@ import com.sl.base.user.entity.User;
  * @since    JDK 1.6 
  * @see       
  */
-public interface UserDao {
-	/**
-	 * 
-	 * save:保存用户对象. <br/> 
-	 * 
-	 * @author laven 
-	 * @param user 
-	 * @since JDK 1.6
-	 */
-	public void save(User user); 
-	
-	/**
-	 * 
-	 * save:更新用户对象. <br/> 
-	 * 
-	 * @author laven 
-	 * @param user 
-	 * @since JDK 1.6
-	 */
-	public void update(User user); 
-	
-	/**
-	 * 
-	 * save:删除用户对象. <br/> 
-	 * 
-	 * @author laven 
-	 * @param user 
-	 * @since JDK 1.6
-	 */
-	public void deleteById(int id); 
-	
-	/**
-	 * 
-	 * save:根据ID查找用户对象. <br/> 
-	 * 
-	 * @author laven 
-	 * @param user 
-	 * @since JDK 1.6
-	 */
-	public User findById(int id); 
-	
-	/**
-	 * 
-	 * save:查找所有用户对象. <br/> 
-	 * 
-	 * @author laven 
-	 * @param user 
-	 * @since JDK 1.6
-	 */
-	public List<User> findAll(); 
-	
-	/**
-	 * 
-	 * count:查询用户数量. <br/> 
-	 * 
-	 * @author laven 
-	 * @return 
-	 * @since JDK 1.6
-	 */
-	public int count();
+public interface UserDao extends BaseDao<BaseUser, Long> {
+
+
 }
   

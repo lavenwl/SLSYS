@@ -16,7 +16,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.sl.base.user.dao.UserDao;
-import com.sl.base.user.entity.User;
 
 /** 
  * ClassName:UserDaoImplTest <br/> 
@@ -55,18 +54,18 @@ public class UserDaoImplTest {
 		getUserDao();
 	}
 	
-	@Test
-	public void testSave() {
-		User user = new User();
-		user.setNickname("123");
-		userDao.save(user);
-		log.debug("test save");
-	}
-	
-	@Test
-	public void testFindeById(){
-		userDao.findById(4);
-	}
+//	@Test
+//	public void testSave() {
+//		User user = new User();
+//		user.setNickname("123");
+//		userDao.save(user);
+//		log.debug("test save");
+//	}
+//	
+//	@Test
+//	public void testFindeById(){
+//		userDao.findById(4);
+//	}
 
 }
   

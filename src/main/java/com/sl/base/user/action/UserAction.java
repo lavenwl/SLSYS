@@ -9,11 +9,15 @@
   
 package com.sl.base.user.action;  
 
+import java.util.Date;
 import java.util.List;
 
-import com.sl.base.user.dao.UserDao;
-import com.sl.base.user.entity.User;
+import com.sl.base.entity.hibernate.BaseUser;
+import com.sl.base.user.entity.QueryUserBean;
 import com.sl.base.user.service.UserService;
+import com.sl.global.action.BaseAction;
+import com.sl.global.entity.QueryBean;
+
 
 /** 
  * ClassName:UserAction <br/> 
@@ -25,23 +29,69 @@ import com.sl.base.user.service.UserService;
  * @since    JDK 1.6 
  * @see       
  */
-public class UserAction {
-	private List<User> userList;
+public class UserAction extends BaseAction<BaseUser>{
+	/** 
+	 * serialVersionUID:TODO(用一句话描述这个变量表示什么). 
+	 * @since JDK 1.6 
+	 */ 
+	private static final long serialVersionUID = -6030003070957722917L;
+	
 	private UserService userService;
-	private UserDao userDao;
-	public String listUsers(){
-		userList = userService.listUsers();
-		return "success";
+	
+	private BaseUser baseUser = new BaseUser();
+	
+	public String execute(){
+		return list();
 	}
 
-	public List<User> getUserList() {
-		return userList;
+	public String add(){
+		BaseUser baseUser = new BaseUser();
+		baseUser.setCreateDate(new Date());
+		baseUser.setUpdateDate(new Date());
+		store.setDataDetail(baseUser);
+		return "userAdd";
 	}
-
-	public void setUserList(List<User> userList) {
-		this.userList = userList;
+	
+	public String list(){
+		List<BaseUser> userList = userService.list();
+		store.setDataList(userList);
+		return "userList";
 	}
-
+	
+	public String detail(){
+		long id = Long.valueOf(request.getParameter("id"));
+		BaseUser baseUser = userService.queryById(id);
+		store.setDataDetail(baseUser);
+		return "userDetail";
+	}
+	
+	public String edit(){
+		long id = Long.valueOf(request.getParameter("id"));
+		BaseUser baseUser = userService.queryById(id);
+		store.setDataDetail(baseUser);
+		return "userEdit";
+	}
+	
+	public String update(){
+		if(null != baseUser){
+			int res = userService.update(baseUser);
+		}
+		return "userUpdate";
+	}
+	
+	public String delete(){
+		long id = Long.valueOf(request.getParameter("id"));
+		int res = userService.deleteById(id);
+		return "userDelete";
+	}
+	
+	public String save(){
+		if(null != baseUser){
+			int res = userService.save(baseUser);
+		}
+		return "userSave";
+	}
+	
 	public UserService getUserService() {
 		return userService;
 	}
@@ -50,13 +100,14 @@ public class UserAction {
 		this.userService = userService;
 	}
 
-	public UserDao getUserDao() {
-		return userDao;
+	public BaseUser getBaseUser() {
+		return baseUser;
 	}
 
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
+	public void setBaseUser(BaseUser baseUser) {
+		this.baseUser = baseUser;
 	}
+
 	
 	
 }

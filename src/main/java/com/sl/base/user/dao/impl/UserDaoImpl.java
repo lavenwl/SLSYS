@@ -11,10 +11,14 @@ package com.sl.base.user.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Example;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
+import com.sl.base.entity.hibernate.BaseUser;
 import com.sl.base.user.dao.UserDao;
-import com.sl.base.user.entity.User;
+import com.sl.global.dao.HibernateDao;
+import com.sl.global.entity.QueryBean;
 
 /** 
  * ClassName:UserDaoImpl <br/> 
@@ -26,50 +30,12 @@ import com.sl.base.user.entity.User;
  * @since    JDK 1.6 
  * @see       
  */
-public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
-
-	@Override
-	public void save(User user) {
-		this.getHibernateTemplate().save(user);
-	}
-
-	@Override
-	public void update(User user) {
-		this.getHibernateTemplate().update(user);
-	}
-
-	@Override
-	public void deleteById(int id) {
-		User user = findById(id);
-		this.getHibernateTemplate().delete(user);
-	}
-
-	@Override
-	public User findById(int id) {
-		String hql = "from User where id=?";
-		List<?> list = this.getHibernateTemplate().find(hql,new Object[]{id}); 
-		if(!list.isEmpty())
-		{
-			return (User)list.get(0); 
-		}
-		return null;
-	}
+public class UserDaoImpl extends HibernateDao<BaseUser, Long> implements UserDao {
 
 	@SuppressWarnings("unchecked")
-	@Override
-	public List<User> findAll() {
-		String hql = "from User";
-		return (List<User>) this.getHibernateTemplate().find(hql);
+	public UserDaoImpl() {
+		super(BaseUser.class);
 	}
-
-	@Override
-	public int count() {
-		String hql = "select count(*) from User";
-		List<?> list = this.getHibernateTemplate().find(hql); 
-		return Integer.valueOf(list.get(0).toString());
-	}
-
-
-
+	
 }
   

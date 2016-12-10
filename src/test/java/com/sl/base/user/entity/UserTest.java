@@ -27,10 +27,10 @@ public class UserTest {
 	Logger log = LoggerFactory.getLogger(UserTest.class);
 
 	
-	@Test
-	public void testLogger(){
-		log.debug("this is log {}", "first debug log");
-	}
+//	@Test
+//	public void testLogger(){
+//		log.debug("this is log {}", "first debug log");
+//	}
 
 }
   

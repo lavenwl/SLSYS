@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-27 14:37:02 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.sl.wholesale.entity.hibernate.WsCompany" table="ws_company" catalog="slsys">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="companyName" type="string">
+            <column name="company_name" length="256">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="32">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="256">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="create_date" length="19" not-null="true">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="updateDate" type="timestamp">
+            <column name="update_date" length="19" not-null="true">
+                <comment>????</comment>
+            </column>
+        </property>
+        <property name="state" type="java.lang.Integer">
+            <column name="state">
+                <comment>??????????</comment>
+            </column>
+        </property>
+        <one-to-one name="wsUserInfo" class="com.sl.wholesale.entity.hibernate.WsUserInfo"></one-to-one>
+    </class>
+</hibernate-mapping>
