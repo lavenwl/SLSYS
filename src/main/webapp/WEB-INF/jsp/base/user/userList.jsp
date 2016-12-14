@@ -5,13 +5,13 @@
 <html>
 	<head>
 		<%@include file="../../common/head.jsp" %>
-		<style type="text/css">
+<%-- 		<style type="text/css">
 		    .button-demo, .progress-demo {
 		        display: inline-block;
 		        margin-right: 3px;
 		        margin-bottom: 0px;
 		    }
-		</style>
+		</style> --%>
 	</head>
 	
 	<body>

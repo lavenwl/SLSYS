@@ -44,6 +44,9 @@
 			<result name="userUpdate" type="redirectAction">user!list</result>
 			<result name="userAdd">/WEB-INF/jsp/base/user/userAdd.jsp</result>
 		</action>
+		<action name="upload" class="com.sl.base.upload.action.UploadAction">
+			
+		</action>
 	</package>
 	
 	<package name="ws" extends="struts-default">

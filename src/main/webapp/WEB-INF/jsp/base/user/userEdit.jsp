@@ -42,19 +42,18 @@
 	
 	                                    <div class="row">
 	                                        <!-- left column -->
+	                                        <s:form class="form-horizontal" role="form" action="user!update.action">
 	                                        <div class="col-md-3">
 	                                            <div class="text-center">
-	                                                <img src="http://placehold.it/150" class="avatar img-circle" alt="avatar">
-	                                                <h6>上传图片详情...</h6>
-	
-	                                                <div class="input-group">
+	                                                <img id="uploadShow" src='<s:property value="store.dataDetail.url"/>' class="avatar img-circle" alt="avatar">
+	                                                <h6 id="uploadMessage">上传图片详情...</h6>
+													<div class="input-group">
 	                                                    <span class="input-group-btn">
 	                                                        <span class="btn btn-primary btn-file">
-	                                                            选择
-	                                                            <input type="file" multiple="">
+	                                                            选择<input id="uploadFacade" name="uploadFile" type="file" accept=".png,.jpg,.gif">
+	                                                            <input id="uploadUrl" name="baseUser.url" type="hidden"/>
 	                                                        </span>
 	                                                    </span>
-	                                                    <input type="text" class="form-control">
 	                                                </div>
 	
 	                                            </div>
@@ -70,7 +69,7 @@
 	                                            </div>
 	                                            <h3>详细信息</h3>
 	
-	                                            <s:form class="form-horizontal" role="form" action="user!update.action">
+	                                            
 	                                            	<input name="baseUser.createDate" class="form-control" value='<s:property value="store.dataDetail.createDate"/>' type="hidden">
 	                                            	<input name="baseUser.id" class="form-control" value='<s:property value="store.dataDetail.id"/>' type="hidden">
 	                                            	<input name="baseUser.state" class="form-control" value='<s:property value="store.dataDetail.state"/>' type="hidden">
@@ -130,8 +129,9 @@
 	                                                        <input class="btn btn-default" value="取消修改" type="reset">
 	                                                    </div>
 	                                                </div>
-	                                            </s:form>
+	                                            
 	                                        </div>
+	                                        </s:form>
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -143,7 +143,7 @@
 	                <!-- END OF PROFILE -->
 		        </div>
 			    <!-- CONTENT 网页内容结束--> 
-	            
+	            <%@include file="../../common/upload.jsp" %>
 	          	<%@include file="../../common/foot.jsp" %> 
 	        </div>
 	    </div>

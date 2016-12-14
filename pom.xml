@@ -250,7 +250,6 @@
 	  <groupId>commons-io</groupId>
 	  <artifactId>commons-io</artifactId>
 	  <version>2.5</version>
-	  <scope>runtime</scope>
 	  <!-- 输入输出工具包 -->
 	</dependency>
 	<dependency>

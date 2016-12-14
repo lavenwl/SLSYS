@@ -147,6 +147,8 @@ public class BaseAction<T> extends ActionSupport implements ServletResponseAware
 	public String save(){
 		return "success";
 	}
+	
+	
 	@Override
 	public void setCookiesMap(Map<String, String> cookies) {
 		this.cookies = cookies;

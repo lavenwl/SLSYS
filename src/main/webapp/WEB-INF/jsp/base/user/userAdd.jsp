@@ -42,21 +42,19 @@
 	
 	                                    <div class="row">
 	                                        <!-- left column -->
+	                                         <s:form  role="form" action="user!save.action">
 	                                        <div class="col-md-3">
 	                                            <div class="text-center">
-	                                                <img src="http://placehold.it/150" class="avatar img-circle" alt="avatar">
-	                                                <h6>上传图片详情...</h6>
-	
-	                                                <div class="input-group">
+	                                                <img id="uploadShow" src="http://placehold.it/150" class="avatar img-circle" alt="avatar">
+	                                                <h6 id="uploadMessage">上传图片详情...</h6>
+													<div class="input-group">
 	                                                    <span class="input-group-btn">
 	                                                        <span class="btn btn-primary btn-file">
-	                                                            选择
-	                                                            <input type="file" multiple="">
+	                                                            选择<input id="uploadFacade" name="uploadFile" type="file" accept=".png,.jpg,.gif">
+	                                                            <input id="uploadUrl" name="baseUser.url" type="hidden"/>
 	                                                        </span>
 	                                                    </span>
-	                                                    <input type="text" class="form-control">
 	                                                </div>
-	
 	                                            </div>
 	                                        </div>
 	
@@ -70,65 +68,65 @@
 	                                            </div>
 	                                            <h3>详细信息</h3>
 	
-	                                            <s:form class="form-horizontal" role="form" action="user!save.action">
-	                                            	<input name="baseUser.createDate" class="form-control" value='<s:property value="store.dataDetail.createDate"/>' type="hidden">
-	                                            	<input name="baseUser.state" class="form-control" value='1' type="hidden">
-	                                            	<input name="baseUser.updateDate" class="form-control" value='<s:property value="store.dataDetail.updateDate"/>' type="hidden">
-	                                                <div class="form-group">
-	                                                    <label class="col-md-3 control-label">用户名:</label>
-	                                                    <div class="col-md-8">
-	                                                        <input name="baseUser.username" class="form-control" value='<s:property value="store.dataDetail.username"/>' type="text">
-	                                                    </div>
-	                                                </div>
-	                                                <div class="form-group">
-	                                                    <label class="col-md-3 control-label">密码:</label>
-	                                                    <div class="col-md-8">
-	                                                        <input name="baseUser.password"class="form-control" value='<s:property value="store.dataDetail.password"/>' type="password">
-	                                                    </div>
-	                                                </div>
-	                                                <div class="form-group">
-	                                                    <label class="col-md-3 control-label">确认密码:</label>
-	                                                    <div class="col-md-8">
-	                                                        <input class="form-control" value="123345" type="password">
-	                                                    </div>
-	                                                </div>
-	                                                <div class="form-group">
-	                                                    <label class="col-lg-3 control-label">电话:</label>
-	                                                    <div class="col-lg-8">
-	                                                        <input name="baseUser.phone" class="form-control" value='<s:property value="store.dataDetail.id"/>' type="text">
-	                                                    </div>
-	                                                </div>
-	                                                <div class="form-group">
-	                                                    <label class="col-lg-3 control-label">商家:</label>
-	                                                    <div class="col-lg-8">
-	                                                        <input class="form-control" value="" type="text">
-	                                                    </div>
-	                                                </div>
-	                                                <div class="form-group">
-	                                                    <label class="col-lg-3 control-label">角色:</label>
-	                                                    <div class="col-lg-8">
-	                                                        <div class="ui-select">
-	                                                            <select name="baseUser.baseRole.id" id="user_time_zone" class="form-control">
-	                                                                <option value="4">供应商
-	                                                                <option value="3">客户
-	                                                                <option value="2">小工
-	                                                                <option value="1">管理员
-	                                                                <option value="5">老板
-	                                                            </select>
-	                                                        </div>
-	                                                    </div>
-	                                                </div>
-	                                                
-	                                                <div class="form-group">
-	                                                    <label class="col-md-3 control-label"></label>
-	                                                    <div class="col-md-8">
-	                                                        <input class="btn btn-primary" value="保存修改" type="submit">
-	                                                        <span></span>
-	                                                        <input class="btn btn-default" value="取消修改" type="reset">
-	                                                    </div>
-	                                                </div>
-	                                            </s:form>
+                                           
+                                            	<input name="baseUser.createDate" class="form-control" value='<s:property value="store.dataDetail.createDate"/>' type="hidden">
+                                            	<input name="baseUser.state" class="form-control" value='1' type="hidden">
+                                            	<input name="baseUser.updateDate" class="form-control" value='<s:property value="store.dataDetail.updateDate"/>' type="hidden">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">用户名:</label>
+                                                    <div class="col-md-8">
+                                                        <input name="baseUser.username" class="form-control" value='<s:property value="store.dataDetail.username"/>' type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">密码:</label>
+                                                    <div class="col-md-8">
+                                                        <input name="baseUser.password"class="form-control" value='<s:property value="store.dataDetail.password"/>' type="password">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">确认密码:</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" value="123345" type="password">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">电话:</label>
+                                                    <div class="col-lg-8">
+                                                        <input name="baseUser.phone" class="form-control" value='<s:property value="store.dataDetail.id"/>' type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">商家:</label>
+                                                    <div class="col-lg-8">
+                                                        <input class="form-control" value="" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">角色:</label>
+                                                    <div class="col-lg-8">
+                                                        <div class="ui-select">
+                                                            <select name="baseUser.baseRole.id" id="user_time_zone" class="form-control">
+                                                                <option value="4">供应商
+                                                                <option value="3">客户
+                                                                <option value="2">小工
+                                                                <option value="1">管理员
+                                                                <option value="5">老板
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label"></label>
+                                                    <div class="col-md-8">
+                                                        <input class="btn btn-primary" value="保存修改" type="submit">
+                                                        <span></span>
+                                                        <input class="btn btn-default" value="取消修改" type="reset">
+                                                    </div>
+                                                </div>
 	                                        </div>
+	                                        </s:form>
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -136,11 +134,14 @@
 	                        <!-- END OF BLANK PAGE -->
 	
 	                    </div>
-	               
+	                    
+	                   
+	              
+	              
 	                <!-- END OF PROFILE -->
 		        </div>
 			    <!-- CONTENT 网页内容结束--> 
-	            
+	            <%@include file="../../common/upload.jsp" %>
 	          	<%@include file="../../common/foot.jsp" %> 
 	        </div>
 	    </div>
@@ -150,4 +151,4 @@
 		<%@include file="../../common/loadJs.jsp" %>
 	</body>
 </html>
-<s:debug/><s:property value="pagein"/>
+<s:debug/> <s:fielderror />

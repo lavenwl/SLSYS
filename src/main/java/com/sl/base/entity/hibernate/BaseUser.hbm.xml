@@ -23,6 +23,11 @@
                 <comment>??</comment>
             </column>
         </property>
+        <property name="url" type="string">
+            <column name="url" >
+                <comment>??</comment>
+            </column>
+        </property>
         <property name="phone" type="string">
             <column name="phone" length="20">
                 <comment>???</comment>

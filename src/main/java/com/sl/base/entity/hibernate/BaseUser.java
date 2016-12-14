@@ -14,6 +14,7 @@ public class BaseUser implements java.io.Serializable {
 	private String username;
 	private String password;
 	private String phone;
+	private String url;
 	private Date createDate;
 	private Date updateDate;
 	private Integer state;
@@ -22,18 +23,19 @@ public class BaseUser implements java.io.Serializable {
 	}
 
 	public BaseUser(long id, BaseRole baseRole, String username,
-			String password, Date createDate, Date updateDate) {
+			String password, Date createDate, Date updateDate,String url) {
 		this.id = id;
 		this.baseRole = baseRole;
 		this.username = username;
 		this.password = password;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
+		this.url = url;
 	}
 
 	public BaseUser(long id, BaseRole baseRole, String username,
 			String password, String phone, Date createDate, Date updateDate,
-			Integer state) {
+			Integer state,String url) {
 		this.id = id;
 		this.baseRole = baseRole;
 		this.username = username;
@@ -42,6 +44,7 @@ public class BaseUser implements java.io.Serializable {
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 		this.state = state;
+		this.url = url;
 	}
 
 	public long getId() {
@@ -106,6 +109,14 @@ public class BaseUser implements java.io.Serializable {
 
 	public void setState(Integer state) {
 		this.state = state;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

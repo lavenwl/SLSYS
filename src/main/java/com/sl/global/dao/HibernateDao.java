@@ -14,13 +14,9 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Example;
 import org.hibernate.transform.Transformers;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
-
-import com.sl.base.entity.hibernate.BaseUser;
 import com.sl.global.entity.QueryBean;
 
 /** 
@@ -95,8 +91,8 @@ public class HibernateDao<T, PK extends Serializable> extends HibernateDaoSuppor
 
 	@Override
 	public List<T> queryUsingAll() {
-		String hql = " from " + this.persistentClass.getName() + " a where a.state=1";
-		return queryByHql(hql, null);
+		String hql = " from " + this.persistentClass.getName() + " a where a.state=?";
+		return queryByHql(hql, 1);
 	}
 
 	@Override
