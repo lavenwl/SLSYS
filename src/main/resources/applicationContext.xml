@@ -45,7 +45,7 @@
 		<property name="dataSource" ref="hikariDataSource"></property> 
 		<property name="mappingDirectoryLocations">
 			<list>
-				<value>classpath*:com/sl/base/entity/hibernate/</value>
+				<value>classpath*:com/sl/portal/entity/hibernate/</value>
 				<value>classpath*:com/sl/wholesale/entity/hibernate/</value>
 		    </list>
 		</property>
@@ -97,15 +97,15 @@
 	</aop:config> -->
 	
 	
-	<bean id="userDao" class="com.sl.base.user.dao.impl.UserDaoImpl"> 
+	<bean id="userDao" class="com.sl.portal.user.dao.impl.UserDaoImpl"> 
 		<property name="sessionFactory" ref="mySessionFactory"></property> 
 	</bean>
-	<bean id="userService" class="com.sl.base.user.service.impl.UserServiceImpl">
+	<bean id="userService" class="com.sl.portal.user.service.impl.UserServiceImpl">
 	</bean>
-	<bean id="roleDao" class="com.sl.base.role.dao.impl.RoleDaoImpl"> 
+	<bean id="roleDao" class="com.sl.portal.role.dao.impl.RoleDaoImpl"> 
 		<property name="sessionFactory" ref="mySessionFactory"></property> 
 	</bean>
-	<bean id="roleService" class="com.sl.base.role.service.impl.RoleServiceImpl">
+	<bean id="roleService" class="com.sl.portal.role.service.impl.RoleServiceImpl">
 	</bean>
 	<bean id="companyDao" class="com.sl.wholesale.company.dao.impl.CompanyDaoImpl"> 
 		<property name="sessionFactory" ref="mySessionFactory"></property> 

@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.sl.base.user.dao.UserDao;
+import com.sl.portal.user.dao.UserDao;
 
 /** 
  * ClassName:UserDaoImplTest <br/> 

@@ -38,11 +38,7 @@
 		<action name="index">
 			<result>/WEB-INF/jsp/index.jsp</result>
 		</action>
-	</package>
-	
-	<package name="base" extends="Struts-sl">
-		<global-allowed-methods>regex:.*</global-allowed-methods>
-		<action name="user" class="com.sl.base.user.action.UserAction">
+		<action name="user" class="com.sl.portal.user.action.UserAction">
 			<result name="success">/WEB-INF/jsp/success.jsp</result>
 			<result name="list">/WEB-INF/jsp/base/user/userList.jsp</result>
 			<result name="detail">/WEB-INF/jsp/base/user/userDetail.jsp</result>
@@ -52,7 +48,7 @@
 			<result name="update" type="redirectAction">user!list</result>
 			<result name="add">/WEB-INF/jsp/base/user/userAdd.jsp</result>
 		</action>
-		<action name="role" class="com.sl.base.role.action.RoleAction">
+		<action name="role" class="com.sl.portal.role.action.RoleAction">
 			<result name="success">/WEB-INF/jsp/success.jsp</result>
 			<result name="list">/WEB-INF/jsp/base/role/roleList.jsp</result>
 			<result name="detail">/WEB-INF/jsp/base/role/roleDetail.jsp</result>
@@ -62,6 +58,11 @@
 			<result name="update" type="redirectAction">role!list</result>
 			<result name="add">/WEB-INF/jsp/base/role/roleAdd.jsp</result>
 		</action>
+	</package>
+	
+	<package name="base" extends="Struts-sl">
+		<global-allowed-methods>regex:.*</global-allowed-methods>
+		
 		
 		<action name="upload" class="com.sl.base.upload.action.UploadAction">
 			

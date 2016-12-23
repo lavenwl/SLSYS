@@ -1,3 +1,4 @@
+
 /** 
  * Project Name:slsys 
  * File Name:Menu.java 
@@ -84,8 +85,8 @@ public class Menu {
 		list4.add(menu42);
 		list4.add(menu43);
 		Menu menu4 = new Menu("商品种类","ws","goodsType.action",list4);
-		Menu menu5 = new Menu("用户管理","base","user.action",null);
-		Menu menu6 = new Menu("角色管理","base","role.action",null);
+		Menu menu5 = new Menu("用户管理","portal","user.action",null);
+		Menu menu6 = new Menu("角色管理","portal","role.action",null);
 		Menu menu7 = new Menu("商家管理","ws","company.action",null);
 		List<Menu> list2 = new ArrayList<Menu>();
 		list2.add(menu3);
@@ -101,4 +102,4 @@ public class Menu {
 	}
 	
 }
-  
+

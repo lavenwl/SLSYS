@@ -1,40 +1,32 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-12-23 23:53:14 by Hibernate Tools 4.0.0 -->
+<!-- Generated 2016-12-23 23:54:12 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="com.sl.wholesale.entity.hibernate.Goods" table="goods" catalog="slsys">
+    <class name="com.sl.portal.entity.hibernate.User" table="user" catalog="slsys">
         <id name="id" type="java.lang.Long">
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="goodsType" class="com.sl.wholesale.entity.hibernate.GoodsType" fetch="select">
-            <column name="type_id">
+        <many-to-one name="role" class="com.sl.portal.entity.hibernate.Role" fetch="select">
+            <column name="role_id" not-null="true">
                 <comment>
-                &#195;&#167;&#226;&#128;&#176;&#194;&#169;&#195;&#168;&#194;&#181;&#226;&#128;&#158;&#195;&#167;&#194;&#177;&#194;&#187;&#195;&#165;&#203;&#134;&#194;&#171;</comment>
+                &#195;&#167;&#226;&#128;&#157;&#194;&#168;&#195;&#166;&#203;&#134;&#194;&#183;&#195;&#168;&#194;&#167;&#226;&#128;&#153;&#195;&#168;&#226;&#128;&#176;&#194;&#178;</comment>
             </column>
         </many-to-one>
-        <property name="name" type="string">
-            <column name="name">
-                <comment>
-                &#195;&#167;&#226;&#128;&#176;&#194;&#169;&#195;&#168;&#194;&#181;&#226;&#128;&#158;&#195;&#165;&#194;&#144;&#194;&#141;&#195;&#167;&#194;&#167;&#194;&#176;</comment>
+        <property name="username" type="string">
+            <column name="username" length="100" not-null="true">
+                <comment>&#195;&#167;&#226;&#128;&#157;&#194;&#168;&#195;&#166;&#203;&#134;&#194;&#183;&#195;&#165;&#194;&#144;&#194;&#141;</comment>
             </column>
         </property>
-        <property name="spec" type="string">
-            <column name="spec">
-                <comment>
-                &#195;&#167;&#226;&#128;&#176;&#194;&#169;&#195;&#168;&#194;&#181;&#226;&#128;&#158;&#195;&#168;&#194;&#167;&#226;&#128;&#158;&#195;&#166;&#194;&#160;&#194;&#188;</comment>
+        <property name="password" type="string">
+            <column name="password" not-null="true">
+                <comment>&#195;&#165;&#194;&#175;&#226;&#128;&#160;&#195;&#167;&#194;&#160;&#194;&#129;</comment>
             </column>
         </property>
-        <property name="brand" type="string">
-            <column name="brand">
-                <comment>
-                &#195;&#167;&#226;&#128;&#176;&#194;&#169;&#195;&#168;&#194;&#181;&#226;&#128;&#158;&#195;&#165;&#226;&#128;&#156;&#194;&#129;&#195;&#167;&#226;&#128;&#176;&#197;&#146;</comment>
-            </column>
-        </property>
-        <property name="provider" type="string">
-            <column name="provider" length="256">
-                <comment>&#195;&#164;&#194;&#190;&#226;&#128;&#186;&#195;&#165;&#194;&#186;&#226;&#128;&#157;&#195;&#165;&#226;&#128;&#162;&#226;&#128;&#160;</comment>
+        <property name="phone" type="string">
+            <column name="phone" length="20">
+                <comment>&#195;&#166;&#226;&#128;&#176;&#226;&#128;&#185;&#195;&#166;&#197;&#147;&#194;&#186;&#195;&#165;&#194;&#143;&#194;&#183;</comment>
             </column>
         </property>
         <property name="url" type="string">
@@ -61,13 +53,11 @@
                 &#195;&#166;&#226;&#128;&#162;&#194;&#176;&#195;&#166;&#194;&#141;&#194;&#174;&#195;&#167;&#197;&#160;&#194;&#182;&#195;&#166;&#226;&#130;&#172;&#194;&#129;&#195;&#175;&#194;&#188;&#203;&#134;&#195;&#166;&#203;&#156;&#194;&#175;&#195;&#165;&#194;&#144;&#194;&#166;&#195;&#166;&#197;&#147;&#226;&#128;&#176;&#195;&#166;&#226;&#128;&#162;&#203;&#134;&#195;&#175;&#194;&#188;&#226;&#128;&#176;</comment>
             </column>
         </property>
-        <set name="items" table="item" inverse="true" lazy="true" fetch="select">
+        <set name="userInfos" table="user_info" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="goods_id">
-                    <comment>&#195;&#167;&#226;&#128;&#176;&#194;&#169;&#195;&#168;&#194;&#181;&#226;&#128;&#158;ID</comment>
-                </column>
+                <column name="user_id" not-null="true" />
             </key>
-            <one-to-many class="com.sl.wholesale.entity.hibernate.Item" />
+            <one-to-many class="com.sl.wholesale.entity.hibernate.UserInfo" />
         </set>
     </class>
 </hibernate-mapping>
