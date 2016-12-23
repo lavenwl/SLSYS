@@ -9,16 +9,9 @@
   
 package com.sl.base.user.dao.impl;  
 
-import java.util.List;
-
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Example;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
-
-import com.sl.base.entity.hibernate.BaseUser;
+import com.sl.base.entity.hibernate.User;
 import com.sl.base.user.dao.UserDao;
 import com.sl.global.dao.HibernateDao;
-import com.sl.global.entity.QueryBean;
 
 /** 
  * ClassName:UserDaoImpl <br/> 
@@ -30,11 +23,11 @@ import com.sl.global.entity.QueryBean;
  * @since    JDK 1.6 
  * @see       
  */
-public class UserDaoImpl extends HibernateDao<BaseUser, Long> implements UserDao {
+public class UserDaoImpl extends HibernateDao<User, Long> implements UserDao {
 
 	@SuppressWarnings("unchecked")
 	public UserDaoImpl() {
-		super(BaseUser.class);
+		super(User.class);
 	}
 	
 }

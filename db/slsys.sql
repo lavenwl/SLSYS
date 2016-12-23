@@ -1,119 +1,272 @@
-DROP TABLE "base_user";
-DROP TABLE "base_role";
-DROP TABLE "ws_user_info";
-DROP TABLE "ws_company";
-DROP TABLE "ws_order";
-DROP TABLE "ws_item";
-DROP TABLE "ws_goods";
-DROP TABLE "ws_goods_type";
-DROP TABLE "ws_sale_mode";
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     2016/10/26 20:11:40                          */
+/*==============================================================*/
 
-CREATE TABLE "base_user" (
-"id" INTEGER NOT NULL,
-"username" CHARACTER VARYING(100) NOT NULL,
-"password" CHARACTER VARYING(255) NOT NULL,
-"phone" CHARACTER VARYING(20) NULL,
-"role_id" INTEGER NOT NULL 1,
-"create_date" TIMESTAMP NULL DEFAULT NULL,
-"update_date" TIMESTAMP NULL DEFAULT NULL,
-"state" INTEGER NULL 1,
-PRIMARY KEY ("id") 
+
+/*==============================================================*/
+/* Table: role                                             */
+/*==============================================================*/
+create table slsys.role
+(
+   id                   bigint(32) not null AUTO_INCREMENT comment '唯一索引',
+   name                 national varchar(128) not null comment '角色名称',
+   url              national varchar(500) comment '图片路径',
+   create_date          timestamp default CURRENT_TIMESTAMP comment '创建时间',
+   update_date          timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
+   state                int(32) default 1 comment '数据状态（是否有效）',primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;  
+
+alter table slsys.role comment '用户角色表';
+
+
+
+/*==============================================================*/
+/* Index: Index_1                                               */
+/*==============================================================*/
+create unique index Index_1 on slsys.role
+(
+   id
 );
 
-CREATE TABLE "base_role" (
-"id" INTEGER NOT NULL,
-"name" CHARACTER VARYING(100) NOT NULL,
-"create_date" TIMESTAMP NULL DEFAULT NULL,
-"update_date" TIMESTAMP NULL DEFAULT NULL,
-"state" INTEGER NULL 1,
-PRIMARY KEY ("id") 
+/*==============================================================*/
+/* Table: user                                             */
+/*==============================================================*/
+create table slsys.user
+(
+   id                   bigint(32) not null AUTO_INCREMENT comment '唯一索引',
+   username             national varchar(100) not null comment '用户名
+            
+            ',
+   password             national varchar(255) not null comment '密码',
+   phone                national varchar(20) comment '手机号',
+   role_id              bigint(32) not null comment '用户角色',
+   url              national varchar(500) comment '图片路径',
+   create_date          timestamp default CURRENT_TIMESTAMP comment '创建时间',
+   update_date          timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
+   state                int(32) default 1 comment '数据状态（是否有效）',primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;  
+
+alter table slsys.user comment '用户基本数据表';
+
+
+
+/*==============================================================*/
+/* Index: Index_1                                               */
+/*==============================================================*/
+create index Index_1 on slsys.user
+(
+   id
 );
 
-CREATE TABLE "ws_user_info" (
-"id" INTEGER NOT NULL,
-"user_id" INTEGER NOT NULL,
-"company_id" INTEGER NOT NULL,
-"phone" CHARACTER VARYING(20) NULL,
-"create_date" TIMESTAMP NULL DEFAULT NULL,
-"update_date" TIMESTAMP NULL DEFAULT NULL,
-"state" INTEGER NULL 1,
-PRIMARY KEY ("id") 
+/*==============================================================*/
+/* Table: company                                            */
+/*==============================================================*/
+create table slsys.company
+(
+   id                   bigint(32) not null AUTO_INCREMENT comment '唯一索引',
+   name         national varchar(256) comment '公司名称',
+   phone                national varchar(32) comment '公司电话',
+   address              national varchar(256) comment '公司地址',
+   url              national varchar(500) comment '图片路径',
+   create_date          timestamp default CURRENT_TIMESTAMP comment '创建时间',
+   update_date          timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
+   state                int(32) default 1 comment '数据状态（是否有效）',primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;  
+
+alter table slsys.company comment '单位表
+';
+
+
+
+/*==============================================================*/
+/* Index: Index_1                                               */
+/*==============================================================*/
+create index Index_1 on slsys.company
+(
+   id
 );
 
-CREATE TABLE "ws_company" (
-"id" INTEGER NOT NULL,
-"company_name" CHARACTER VARYING(255) NULL,
-"phone" CHARACTER VARYING(20) NULL,
-"address" CHARACTER VARYING(255) NULL,
-"create_date" TIMESTAMP NULL DEFAULT NULL,
-"update_date" TIMESTAMP NULL DEFAULT NULL,
-"state" INTEGER NULL 1,
-PRIMARY KEY ("id") 
+/*==============================================================*/
+/* Table: goods                                              */
+/*==============================================================*/
+create table slsys.goods
+(
+   id                   bigint(32) not null AUTO_INCREMENT comment '唯一索引',
+   name                 national varchar(255) comment '物资名称',
+   type_id              bigint(32) comment '物资类别',
+   spec                 national varchar(255) comment '物资规格',
+   brand                national varchar(255) comment '物资品牌',
+   provider             varchar(256) comment '供应商',
+   url              national varchar(500) comment '图片路径',
+   create_date          timestamp default CURRENT_TIMESTAMP comment '创建时间',
+   update_date          timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
+   state                int(32) default 1 comment '数据状态（是否有效）',primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;  
+
+alter table slsys.goods comment '物资表';
+
+
+
+/*==============================================================*/
+/* Index: Index_1                                               */
+/*==============================================================*/
+create index Index_1 on slsys.goods
+(
+   id
 );
 
-CREATE TABLE "ws_order" (
-"id" INTEGER NOT NULL,
-"sale" INTEGER NULL,
-"purchase" INTEGER NULL,
-"sum_money" DECIMAL(8,8) NULL 0,
-"money" DECIMAL(8,8) NULL 0,
-"create_date" TIMESTAMP NULL DEFAULT NULL,
-"update_date" TIMESTAMP NULL DEFAULT NULL,
-"state" INTEGER NULL 1,
-PRIMARY KEY ("id") 
+/*==============================================================*/
+/* Table: goods_type                                         */
+/*==============================================================*/
+create table slsys.goods_type
+(
+   id                   bigint(32) not null AUTO_INCREMENT comment '唯一索引',
+   name                 varchar(256) comment '物资种类',
+   create_date          timestamp default CURRENT_TIMESTAMP comment '创建时间',
+   update_date          timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
+   state                int(32) default 1 comment '数据状态（是否有效）',primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;  
+
+alter table slsys.goods_type comment '物资类别表
+';
+
+
+
+/*==============================================================*/
+/* Index: Index_1                                               */
+/*==============================================================*/
+create index Index_1 on slsys.goods_type
+(
+   id
 );
 
-CREATE TABLE "ws_item" (
-"id" INTEGER NOT NULL,
-"order_id" INTEGER NULL,
-"goods_id" INTEGER NULL,
-"num" INTEGER NULL,
-"sale_mode_id" INTEGER NULL,
-"create_date" TIMESTAMP NULL DEFAULT NULL,
-"update_date" TIMESTAMP NULL DEFAULT NULL,
-"state" INTEGER NULL 1,
-PRIMARY KEY ("id") 
+/*==============================================================*/
+/* Table: item                                               */
+/*==============================================================*/
+create table slsys.item
+(
+   id                   bigint(32) not null AUTO_INCREMENT comment '唯一索引',
+   order_id             bigint(32) comment '订单ID',
+   goods_id             bigint(32) comment '物资ID',
+   num                  int(32) comment '项目数量',
+   sale_mode_id         bigint(32) comment '项目价格',
+   create_date          timestamp default CURRENT_TIMESTAMP comment '创建时间',
+   update_date          timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
+   state                int(32) default 1 comment '数据状态（是否有效）',primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;  
+
+alter table slsys.item comment '订单项目表';
+
+
+
+/*==============================================================*/
+/* Index: Index_1                                               */
+/*==============================================================*/
+create index Index_1 on slsys.item
+(
+   id
 );
 
-CREATE TABLE "ws_goods" (
-"id" INTEGER NOT NULL,
-"name" CHARACTER VARYING(255) NULL,
-"type_id" INTEGER NULL,
-"spec" CHARACTER VARYING(255) NULL,
-"brand" CHARACTER VARYING(255) NULL,
-"provider" INTEGER NULL,
-"create_date" TIMESTAMP NULL DEFAULT NULL,
-"update_date" TIMESTAMP NULL DEFAULT NULL,
-"state" INTEGER NULL 1,
-PRIMARY KEY ("id") 
+/*==============================================================*/
+/* Table: order                                              */
+/*==============================================================*/
+create table slsys.order
+(
+   id                   bigint(32) not null AUTO_INCREMENT comment '唯一索引',
+   sale                 bigint(32) comment '销售方',
+   purchase             bigint(32) comment '采购方',
+   sum_money            decimal(8,8) default 0.00000000 comment '合计金额',
+   money                decimal(8,8) default 0.00000000 comment '交易金额',
+   create_date          timestamp default CURRENT_TIMESTAMP comment '创建时间',
+   update_date          timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
+   state                int(32) default 1 comment '数据状态（是否有效）',primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;  
+
+alter table slsys.order comment '订单表';
+
+
+
+/*==============================================================*/
+/* Index: Index_1                                               */
+/*==============================================================*/
+create index Index_1 on slsys.order
+(
+   id
 );
 
-CREATE TABLE "ws_goods_type" (
-"id" INTEGER NOT NULL,
-"name" CHARACTER VARYING(255) NULL,
-"create_date" TIMESTAMP NULL DEFAULT NULL,
-"update_date" TIMESTAMP NULL DEFAULT NULL,
-"state" INTEGER NULL 1,
-PRIMARY KEY ("id") 
+/*==============================================================*/
+/* Table: sale_mode                                          */
+/*==============================================================*/
+create table slsys.sale_mode
+(
+   id                   bigint(32) not null AUTO_INCREMENT comment '唯一索引',
+   name                 national varchar(256) comment '销售方式',
+   create_date          timestamp default CURRENT_TIMESTAMP comment '创建时间',
+   update_date          timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
+   state                int(32) default 1 comment '数据状态（是否有效）',primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;  
+
+alter table slsys.sale_mode comment '销售模式表';
+
+
+
+/*==============================================================*/
+/* Index: Index_1                                               */
+/*==============================================================*/
+create index Index_1 on slsys.sale_mode
+(
+   id
 );
 
-CREATE TABLE "ws_sale_mode" (
-"id" INTEGER NOT NULL,
-"name" CHARACTER VARYING(255) NULL,
-"create_date" TIMESTAMP NULL DEFAULT NULL,
-"update_date" TIMESTAMP NULL DEFAULT NULL,
-"state" INTEGER NULL 1,
-PRIMARY KEY ("id") 
+/*==============================================================*/
+/* Table: user_info                                          */
+/*==============================================================*/
+create table slsys.user_info
+(
+   id                   bigint(32) not null AUTO_INCREMENT comment '唯一索引',
+   user_id              bigint(32) not null,
+   company_id           bigint(32) not null,
+   create_date          timestamp default CURRENT_TIMESTAMP comment '创建时间',
+   update_date          timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
+   state                int(32) default 1 comment '数据状态（是否有效）',primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;  
+
+alter table slsys.user_info comment '批发模块用户数据表';
+
+
+
+/*==============================================================*/
+/* Index: Index_1                                               */
+/*==============================================================*/
+create index Index_1 on slsys.user_info
+(
+   id
 );
 
+alter table slsys.user add constraint fk_user foreign key (role_id)
+      references slsys.role (id);
 
-ALTER TABLE "base_user" ADD CONSTRAINT "fk_user" FOREIGN KEY ("role_id") REFERENCES "base_role" ("id");
-ALTER TABLE "ws_user_info" ADD CONSTRAINT "fk_user_info" FOREIGN KEY ("company_id") REFERENCES "ws_company" ("id");
-ALTER TABLE "ws_user_info" ADD CONSTRAINT "fk_user_info_1" FOREIGN KEY ("user_id") REFERENCES "base_user" ("id");
-ALTER TABLE "ws_order" ADD CONSTRAINT "fk_order" FOREIGN KEY ("sale") REFERENCES "ws_user_info" ("user_id");
-ALTER TABLE "ws_order" ADD CONSTRAINT "fk_order_1" FOREIGN KEY ("purchase") REFERENCES "ws_user_info" ("user_id");
-ALTER TABLE "ws_goods" ADD CONSTRAINT "fk_goods" FOREIGN KEY ("type_id") REFERENCES "ws_goods_type" ("id");
-ALTER TABLE "ws_item" ADD CONSTRAINT "fk_item" FOREIGN KEY ("goods_id") REFERENCES "ws_goods" ("id");
-ALTER TABLE "ws_item" ADD CONSTRAINT "fk_item_1" FOREIGN KEY ("sale_mode_id") REFERENCES "ws_sale_mode" ("id");
-ALTER TABLE "ws_item" ADD CONSTRAINT "fk_item_2" FOREIGN KEY ("order_id") REFERENCES "ws_order" ("id");
+alter table slsys.goods add constraint fk_goods foreign key (type_id)
+      references slsys.goods_type (id);
 
+alter table slsys.item add constraint fk_item foreign key (goods_id)
+      references slsys.goods (id);
+
+alter table slsys.item add constraint fk_item_1 foreign key (sale_mode_id)
+      references slsys.sale_mode (id);
+
+alter table slsys.item add constraint fk_item_2 foreign key (order_id)
+      references slsys.order (id);
+
+alter table slsys.order add constraint fk_order foreign key (sale)
+      references slsys.user_info (id);
+
+alter table slsys.order add constraint fk_order_1 foreign key (purchase)
+      references slsys.user_info (id);
+
+alter table slsys.user_info add constraint fk_user_info foreign key (id)
+      references slsys.company (id);
+
+alter table slsys.user_info add constraint FK_fk_user_info_1 foreign key (user_id)
+      references slsys.user (id) on delete restrict on update restrict;

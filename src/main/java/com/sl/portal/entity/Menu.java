@@ -85,10 +85,14 @@ public class Menu {
 		list4.add(menu43);
 		Menu menu4 = new Menu("商品种类","ws","goodsType.action",list4);
 		Menu menu5 = new Menu("用户管理","base","user.action",null);
+		Menu menu6 = new Menu("角色管理","base","role.action",null);
+		Menu menu7 = new Menu("商家管理","ws","company.action",null);
 		List<Menu> list2 = new ArrayList<Menu>();
 		list2.add(menu3);
 		list2.add(menu4);
 		list2.add(menu5);
+		list2.add(menu6);
+		list2.add(menu7);
 		Menu menuF2 = new Menu("平台管理","base","",list2);
 		
 		list.add(menuF1);

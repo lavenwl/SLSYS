@@ -8,39 +8,16 @@
 */  
   
 package com.sl.base.upload.action;  
-//import java.io.BufferedInputStream;
-//import java.io.BufferedOutputStream;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-//import java.io.FileInputStream;
-//import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.UUID;
-
-
-
-
-//import org.apache.commons.io.FileUtils;
-//import org.apache.commons.io.FilenameUtils;
-
-
-
-
-
-
-
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
-
-//import org.apache.commons.io.IOUtils;
-import com.sl.base.upload.entity.UploadFile;
 import com.sl.global.action.BaseAction;
+import com.sl.global.entity.BaseEntity;
+import com.sl.global.service.BaseService;
 
 /** 
  * ClassName:UploadAction <br/> 
@@ -51,7 +28,8 @@ import com.sl.global.action.BaseAction;
  * @since    JDK 1.6 
  * @see       
  */
-public class UploadAction extends BaseAction<UploadFile>{
+@SuppressWarnings("rawtypes")
+public class UploadAction extends BaseAction<BaseEntity,BaseService>{
 
 	/** 
 	 * serialVersionUID:TODO(用一句话描述这个变量表示什么). 
@@ -59,12 +37,28 @@ public class UploadAction extends BaseAction<UploadFile>{
 	 */ 
 	private static final long serialVersionUID = 1424721710471724936L;
 
-	private File uploadFile;
-	private String uploadFileFileName;
-	public String execute(){
-		return "success";
+	public UploadAction() throws ClassNotFoundException{
+		super(BaseEntity.class, BaseService.class);
 	}
+	/**
+	 * 上传文件接收类
+	 */
+	private File uploadFile;
+	/**
+	 * 上传文件的名称
+	 */
+	private String uploadFileFileName;
 	
+	/**
+	 * 
+	 * upload:上传文件方法. <br/> 
+	 * 所有上传单个文件的需求都可使用这个方法.<br/> 
+	 * 流程：保存文件，返回文件的路径.<br/> 
+	 * 
+	 * @author laven 
+	 * @return 
+	 * @since JDK 1.6
+	 */
 	public String upload(){
 	     try{
 		     if(uploadFile!=null){  

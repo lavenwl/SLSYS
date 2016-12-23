@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-23 16:52:00 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.sl.base.entity.hibernate.Role" table="role" catalog="slsys">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="128" not-null="true">
+                <comment>
+                &#195;&#168;&#194;&#167;&#226;&#128;&#153;&#195;&#168;&#226;&#128;&#176;&#194;&#178;&#195;&#165;&#194;&#144;&#194;&#141;&#195;&#167;&#194;&#167;&#194;&#176;</comment>
+            </column>
+        </property>
+        <property name="url" type="string">
+            <column name="url" length="500">
+                <comment>
+                &#195;&#165;&#226;&#128;&#186;&#194;&#190;&#195;&#167;&#226;&#128;&#176;&#226;&#128;&#161;&#195;&#168;&#194;&#183;&#194;&#175;&#195;&#165;&#194;&#190;&#226;&#128;&#158;</comment>
+            </column>
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="create_date" length="19" not-null="true">
+                <comment>
+                &#195;&#165;&#203;&#134;&#226;&#128;&#186;&#195;&#165;&#194;&#187;&#194;&#186;&#195;&#166;&#226;&#128;&#148;&#194;&#182;&#195;&#169;&#226;&#128;&#148;&#194;&#180;</comment>
+            </column>
+        </property>
+        <property name="updateDate" type="timestamp">
+            <column name="update_date" length="19" not-null="true">
+                <comment>
+                &#195;&#164;&#194;&#191;&#194;&#174;&#195;&#166;&#226;&#128;&#157;&#194;&#185;&#195;&#166;&#226;&#128;&#148;&#194;&#182;&#195;&#169;&#226;&#128;&#148;&#194;&#180;</comment>
+            </column>
+        </property>
+        <property name="state" type="java.lang.Integer">
+            <column name="state">
+                <comment>
+                &#195;&#166;&#226;&#128;&#162;&#194;&#176;&#195;&#166;&#194;&#141;&#194;&#174;&#195;&#167;&#197;&#160;&#194;&#182;&#195;&#166;&#226;&#130;&#172;&#194;&#129;&#195;&#175;&#194;&#188;&#203;&#134;&#195;&#166;&#203;&#156;&#194;&#175;&#195;&#165;&#194;&#144;&#194;&#166;&#195;&#166;&#197;&#147;&#226;&#128;&#176;&#195;&#166;&#226;&#128;&#162;&#203;&#134;&#195;&#175;&#194;&#188;&#226;&#128;&#176;</comment>
+            </column>
+        </property>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="role_id" not-null="true">
+                    <comment>
+                    &#195;&#167;&#226;&#128;&#157;&#194;&#168;&#195;&#166;&#203;&#134;&#194;&#183;&#195;&#168;&#194;&#167;&#226;&#128;&#153;&#195;&#168;&#226;&#128;&#176;&#194;&#178;</comment>
+                </column>
+            </key>
+            <one-to-many class="com.sl.base.entity.hibernate.User" />
+        </set>
+    </class>
+</hibernate-mapping>

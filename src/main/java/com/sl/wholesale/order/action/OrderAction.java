@@ -10,7 +10,8 @@
 package com.sl.wholesale.order.action;  
 
 import com.sl.global.action.BaseAction;
-import com.sl.wholesale.entity.hibernate.WsOrder;
+import com.sl.global.entity.BaseEntity;
+import com.sl.global.service.BaseService;
 
 /** 
  * ClassName:OrderAction <br/> 
@@ -22,7 +23,9 @@ import com.sl.wholesale.entity.hibernate.WsOrder;
  * @since    JDK 1.6 
  * @see       
  */
-public class OrderAction extends BaseAction<WsOrder> {
-
+public class OrderAction extends BaseAction<BaseEntity,BaseService> {
+	public OrderAction() throws ClassNotFoundException{
+		super(BaseEntity.class, BaseService.class);
+	}
 }
   

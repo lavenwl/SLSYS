@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-23 16:52:56 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.sl.wholesale.entity.hibernate.Item" table="item" catalog="slsys">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="goods" class="com.sl.wholesale.entity.hibernate.Goods" fetch="select">
+            <column name="goods_id">
+                <comment>&#195;&#167;&#226;&#128;&#176;&#194;&#169;&#195;&#168;&#194;&#181;&#226;&#128;&#158;ID</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="order" class="com.sl.wholesale.entity.hibernate.Order" fetch="select">
+            <column name="order_id">
+                <comment>&#195;&#168;&#194;&#174;&#194;&#162;&#195;&#165;&#194;&#141;&#226;&#128;&#162;ID</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="saleMode" class="com.sl.wholesale.entity.hibernate.SaleMode" fetch="select">
+            <column name="sale_mode_id">
+                <comment>
+                &#195;&#169;&#194;&#161;&#194;&#185;&#195;&#167;&#226;&#128;&#186;&#194;&#174;&#195;&#164;&#194;&#187;&#194;&#183;&#195;&#166;&#194;&#160;&#194;&#188;</comment>
+            </column>
+        </many-to-one>
+        <property name="num" type="java.lang.Integer">
+            <column name="num">
+                <comment>
+                &#195;&#169;&#194;&#161;&#194;&#185;&#195;&#167;&#226;&#128;&#186;&#194;&#174;&#195;&#166;&#226;&#128;&#162;&#194;&#176;&#195;&#169;&#226;&#128;&#161;&#194;&#143;</comment>
+            </column>
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="create_date" length="19" not-null="true">
+                <comment>
+                &#195;&#165;&#203;&#134;&#226;&#128;&#186;&#195;&#165;&#194;&#187;&#194;&#186;&#195;&#166;&#226;&#128;&#148;&#194;&#182;&#195;&#169;&#226;&#128;&#148;&#194;&#180;</comment>
+            </column>
+        </property>
+        <property name="updateDate" type="timestamp">
+            <column name="update_date" length="19" not-null="true">
+                <comment>
+                &#195;&#164;&#194;&#191;&#194;&#174;&#195;&#166;&#226;&#128;&#157;&#194;&#185;&#195;&#166;&#226;&#128;&#148;&#194;&#182;&#195;&#169;&#226;&#128;&#148;&#194;&#180;</comment>
+            </column>
+        </property>
+        <property name="state" type="java.lang.Integer">
+            <column name="state">
+                <comment>
+                &#195;&#166;&#226;&#128;&#162;&#194;&#176;&#195;&#166;&#194;&#141;&#194;&#174;&#195;&#167;&#197;&#160;&#194;&#182;&#195;&#166;&#226;&#130;&#172;&#194;&#129;&#195;&#175;&#194;&#188;&#203;&#134;&#195;&#166;&#203;&#156;&#194;&#175;&#195;&#165;&#194;&#144;&#194;&#166;&#195;&#166;&#197;&#147;&#226;&#128;&#176;&#195;&#166;&#226;&#128;&#162;&#203;&#134;&#195;&#175;&#194;&#188;&#226;&#128;&#176;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

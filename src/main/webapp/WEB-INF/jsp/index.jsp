@@ -31,4 +31,3 @@
 	
 	</body>
 </html>
-<s:debug/><s:property value="pagein"/>

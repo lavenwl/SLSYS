@@ -23,6 +23,11 @@
     <link rel="stylesheet" href="assets/js/dataTable/lib/jquery.dataTables/css/DT_bootstrap.css">
     <link rel="stylesheet" href="assets/js/dataTable/css/datatables.responsive.css">
 
+	<!-- 404页面格式文件 -->
+	
+    <link rel="stylesheet" href="assets/css/signin.css">
+    <link rel="stylesheet" href="assets/css/extra-pages.css">
+
     <link rel="shortcut icon" href="assets/ico/minus.png">
 
 

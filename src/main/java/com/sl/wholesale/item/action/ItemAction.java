@@ -10,7 +10,8 @@
 package com.sl.wholesale.item.action;  
 
 import com.sl.global.action.BaseAction;
-import com.sl.wholesale.entity.hibernate.WsItem;
+import com.sl.global.entity.BaseEntity;
+import com.sl.global.service.BaseService;
 
 /** 
  * ClassName:ItemAction <br/> 
@@ -22,7 +23,9 @@ import com.sl.wholesale.entity.hibernate.WsItem;
  * @since    JDK 1.6 
  * @see       
  */
-public class ItemAction extends BaseAction<WsItem> {
-
+public class ItemAction extends BaseAction<BaseEntity,BaseService> {
+	public ItemAction() throws ClassNotFoundException{
+		super(BaseEntity.class, BaseService.class);
+	}
 }
   

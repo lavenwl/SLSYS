@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-23 16:52:56 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.sl.wholesale.entity.hibernate.Order" table="order" catalog="slsys">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="userInfoByPurchase" class="com.sl.wholesale.entity.hibernate.UserInfo" fetch="select">
+            <column name="purchase">
+                <comment>&#195;&#169;&#226;&#128;&#161;&#226;&#128;&#161;&#195;&#168;&#194;&#180;&#194;&#173;&#195;&#166;&#226;&#128;&#147;&#194;&#185;</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="userInfoBySale" class="com.sl.wholesale.entity.hibernate.UserInfo" fetch="select">
+            <column name="sale">
+                <comment>&#195;&#169;&#226;&#128;&#157;&#226;&#130;&#172;&#195;&#165;&#226;&#128;&#157;&#194;&#174;&#195;&#166;&#226;&#128;&#147;&#194;&#185;</comment>
+            </column>
+        </many-to-one>
+        <property name="sumMoney" type="big_decimal">
+            <column name="sum_money" precision="8" scale="8">
+                <comment>
+                &#195;&#165;&#194;&#144;&#203;&#134;&#195;&#168;&#194;&#174;&#194;&#161;&#195;&#169;&#226;&#128;&#161;&#226;&#128;&#152;&#195;&#169;&#194;&#162;&#194;&#157;</comment>
+            </column>
+        </property>
+        <property name="money" type="big_decimal">
+            <column name="money" precision="8" scale="8">
+                <comment>
+                &#195;&#164;&#194;&#186;&#194;&#164;&#195;&#166;&#203;&#156;&#226;&#128;&#156;&#195;&#169;&#226;&#128;&#161;&#226;&#128;&#152;&#195;&#169;&#194;&#162;&#194;&#157;</comment>
+            </column>
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="create_date" length="19" not-null="true">
+                <comment>
+                &#195;&#165;&#203;&#134;&#226;&#128;&#186;&#195;&#165;&#194;&#187;&#194;&#186;&#195;&#166;&#226;&#128;&#148;&#194;&#182;&#195;&#169;&#226;&#128;&#148;&#194;&#180;</comment>
+            </column>
+        </property>
+        <property name="updateDate" type="timestamp">
+            <column name="update_date" length="19" not-null="true">
+                <comment>
+                &#195;&#164;&#194;&#191;&#194;&#174;&#195;&#166;&#226;&#128;&#157;&#194;&#185;&#195;&#166;&#226;&#128;&#148;&#194;&#182;&#195;&#169;&#226;&#128;&#148;&#194;&#180;</comment>
+            </column>
+        </property>
+        <property name="state" type="java.lang.Integer">
+            <column name="state">
+                <comment>
+                &#195;&#166;&#226;&#128;&#162;&#194;&#176;&#195;&#166;&#194;&#141;&#194;&#174;&#195;&#167;&#197;&#160;&#194;&#182;&#195;&#166;&#226;&#130;&#172;&#194;&#129;&#195;&#175;&#194;&#188;&#203;&#134;&#195;&#166;&#203;&#156;&#194;&#175;&#195;&#165;&#194;&#144;&#194;&#166;&#195;&#166;&#197;&#147;&#226;&#128;&#176;&#195;&#166;&#226;&#128;&#162;&#203;&#134;&#195;&#175;&#194;&#188;&#226;&#128;&#176;</comment>
+            </column>
+        </property>
+        <set name="items" table="item" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="order_id">
+                    <comment>&#195;&#168;&#194;&#174;&#194;&#162;&#195;&#165;&#194;&#141;&#226;&#128;&#162;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="com.sl.wholesale.entity.hibernate.Item" />
+        </set>
+    </class>
+</hibernate-mapping>

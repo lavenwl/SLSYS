@@ -11,7 +11,6 @@ package com.sl.global.dao;
 
 import java.io.Serializable;
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.transform.Transformers;
@@ -31,24 +30,24 @@ import com.sl.global.entity.QueryBean;
  * @since    JDK 1.6 
  * @see       
  */
-public class HibernateDao<T, PK extends Serializable> extends HibernateDaoSupport implements BaseDao<T, PK> {
-	private Class<T> persistentClass;
+public class HibernateDao<E, PK extends Serializable> extends HibernateDaoSupport implements BaseDao<E, PK> {
+	private Class<E> persistentClass;
 	
 	/**
 	 * 构造
 	 * @param persistentClass 泛型类参数
 	 */
-	public HibernateDao(final Class<T> persistentClass) {
+	public HibernateDao(final Class<E> persistentClass) {
 		this.persistentClass = persistentClass;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public T save(T object) {
+	public E save(E object) {
 		Object reobj = super.getHibernateTemplate().save(object);
 		this.getHibernateTemplate().flush();
 		this.getHibernateTemplate().clear();
-		return (T) reobj;
+		return (E) reobj;
 	}
 
 	@Override
@@ -59,29 +58,29 @@ public class HibernateDao<T, PK extends Serializable> extends HibernateDaoSuppor
 	}
 
 	@Override
-	public void update(T object) {
+	public void update(E object) {
 		super.getHibernateTemplate().update(object);
 		this.getHibernateTemplate().flush();
 		this.getHibernateTemplate().clear();
 	}
 
 	@Override
-	public void saveOrUpdate(T object) {
+	public void saveOrUpdate(E object) {
 		this.getHibernateTemplate().saveOrUpdate(object);
 		this.getHibernateTemplate().flush();
 		this.getHibernateTemplate().clear();
 	}
 
 	@Override
-	public List<T> queryAll() {
-		List<T> list = super.getHibernateTemplate().loadAll(this.persistentClass);
+	public List<E> queryAll() {
+		List<E> list = super.getHibernateTemplate().loadAll(this.persistentClass);
 		this.getHibernateTemplate().clear();
 		return list;
 	}
 
 	@Override
-	public T queryById(PK id) {
-		T entity = (T) super.getHibernateTemplate().get(this.persistentClass, id);
+	public E queryById(PK id) {
+		E entity = (E) super.getHibernateTemplate().get(this.persistentClass, id);
 		
 		if (entity == null) {
 			throw new ObjectRetrievalFailureException(this.persistentClass, id);
@@ -90,13 +89,13 @@ public class HibernateDao<T, PK extends Serializable> extends HibernateDaoSuppor
 	}
 
 	@Override
-	public List<T> queryUsingAll() {
-		String hql = " from " + this.persistentClass.getName() + " a where a.state=?";
-		return queryByHql(hql, 1);
+	public List<E> queryUsingAll() {
+		String hql = " from " + this.persistentClass.getName() + " a where a.state=1";
+		return queryByHql(hql, null);
 	}
 
 	@Override
-	public List<T> queryByHql(String hql, Object... args) {
+	public List<E> queryByHql(String hql, Object... args) {
 		Session s = currentSession();
 		Query q = s.createQuery(hql);
 		if(hql.trim().startsWith("select")){
@@ -113,7 +112,7 @@ public class HibernateDao<T, PK extends Serializable> extends HibernateDaoSuppor
 	}
 
 	@Override
-	public List<T> queryByQueryBean(QueryBean queryBean) {
+	public List<E> queryByQueryBean(QueryBean queryBean) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -10,7 +10,8 @@
 package com.sl.wholesale.salemode.action;  
 
 import com.sl.global.action.BaseAction;
-import com.sl.wholesale.entity.hibernate.WsSaleMode;
+import com.sl.global.entity.BaseEntity;
+import com.sl.global.service.BaseService;
 
 /** 
  * ClassName:SaleModeAction <br/> 
@@ -22,7 +23,9 @@ import com.sl.wholesale.entity.hibernate.WsSaleMode;
  * @since    JDK 1.6 
  * @see       
  */
-public class SaleModeAction extends BaseAction<WsSaleMode> {
-
+public class SaleModeAction extends BaseAction<BaseEntity,BaseService> {
+	public SaleModeAction() throws ClassNotFoundException{
+		super(BaseEntity.class, BaseService.class);
+	}
 }
   

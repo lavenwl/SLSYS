@@ -16,7 +16,7 @@
 	>
 	
 	<aop:aspectj-autoproxy proxy-target-class="true" />
-	
+	<bean class="com.sl.global.util.SpringContextUtil"></bean>
 	<!-- 加载配置文件 -->
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -83,6 +83,19 @@
 		<aop:pointcut expression="within(com.sl..*)" id="servicePointcut"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePointcut"/>
 	</aop:config>
+	<!-- 配置自定义切入点（完成日志及路径分析权限控制等功能） -->
+<!-- 	<bean id="optLogger" class="com.laven.aop.OptLogger" ></bean>
+	<aop:config>
+		<aop:pointcut id="servicepointcut" expression="execution(public com.sl.*.action.*.*(..))" />
+		<aop:aspect id="loggeraspect" ref="optLogger">
+			<aop:before method="mybefore" pointcut-ref="servicepointcut" />
+			<aop:after-returning method="myafterReturning" returning="retVal" pointcut-ref="servicepointcut" />
+			<aop:around method="logger2" pointcut-ref="servicepointcut" />
+			<aop:after-throwing method="myafterException" throwing="e" pointcut-ref="servicepointcut" />
+			<aop:after method="myafter" pointcut-ref="servicepointcut" />
+		</aop:aspect>
+	</aop:config> -->
+	
 	
 	<bean id="userDao" class="com.sl.base.user.dao.impl.UserDaoImpl"> 
 		<property name="sessionFactory" ref="mySessionFactory"></property> 
@@ -93,5 +106,20 @@
 		<property name="sessionFactory" ref="mySessionFactory"></property> 
 	</bean>
 	<bean id="roleService" class="com.sl.base.role.service.impl.RoleServiceImpl">
+	</bean>
+	<bean id="companyDao" class="com.sl.wholesale.company.dao.impl.CompanyDaoImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory"></property> 
+	</bean>
+	<bean id="companyService" class="com.sl.wholesale.company.service.impl.CompanyServiceImpl">
+	</bean>
+	<bean id="goodsTypeDao" class="com.sl.wholesale.goodstype.dao.impl.GoodsTypeDaoImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory"></property> 
+	</bean>
+	<bean id="goodsTypeService" class="com.sl.wholesale.goodstype.service.impl.GoodsTypeServiceImpl">
+	</bean>
+	<bean id="goodsDao" class="com.sl.wholesale.goods.dao.impl.GoodsDaoImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory"></property> 
+	</bean>
+	<bean id="goodsService" class="com.sl.wholesale.goods.service.impl.GoodsServiceImpl">
 	</bean>
 </beans>

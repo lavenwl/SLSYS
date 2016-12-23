@@ -9,14 +9,8 @@
   
 package com.sl.base.user.dao;  
 
-import java.util.List;
-
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Example;
-
-import com.sl.base.entity.hibernate.BaseUser;
+import com.sl.base.entity.hibernate.User;
 import com.sl.global.dao.BaseDao;
-import com.sl.global.entity.QueryBean;
 
 /** 
  * ClassName:UserDao <br/> 
@@ -28,8 +22,7 @@ import com.sl.global.entity.QueryBean;
  * @since    JDK 1.6 
  * @see       
  */
-public interface UserDao extends BaseDao<BaseUser, Long> {
-
+public interface UserDao extends BaseDao<User, Long> {
 
 }
   

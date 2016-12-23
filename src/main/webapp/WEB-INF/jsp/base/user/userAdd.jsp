@@ -42,7 +42,7 @@
 	
 	                                    <div class="row">
 	                                        <!-- left column -->
-	                                         <s:form  role="form" action="user!save.action">
+	                                         <form  role="form" action="<s:property value='#session.actionName'/>!save.action" method="post">
 	                                        <div class="col-md-3">
 	                                            <div class="text-center">
 	                                                <img id="uploadShow" src="http://placehold.it/150" class="avatar img-circle" alt="avatar">
@@ -51,7 +51,7 @@
 	                                                    <span class="input-group-btn">
 	                                                        <span class="btn btn-primary btn-file">
 	                                                            选择<input id="uploadFacade" name="uploadFile" type="file" accept=".png,.jpg,.gif">
-	                                                            <input id="uploadUrl" name="baseUser.url" type="hidden"/>
+	                                                            <input id="uploadUrl" name="user.url" type="hidden"/>
 	                                                        </span>
 	                                                    </span>
 	                                                </div>
@@ -69,19 +69,19 @@
 	                                            <h3>详细信息</h3>
 	
                                            
-                                            	<input name="baseUser.createDate" class="form-control" value='<s:property value="store.dataDetail.createDate"/>' type="hidden">
-                                            	<input name="baseUser.state" class="form-control" value='1' type="hidden">
-                                            	<input name="baseUser.updateDate" class="form-control" value='<s:property value="store.dataDetail.updateDate"/>' type="hidden">
+                                            	<input name="user.createDate" class="form-control" value='<s:property value="store.dataDetail.createDate"/>' type="hidden">
+                                            	<input name="user.state" class="form-control" value='1' type="hidden">
+                                            	<input name="user.updateDate" class="form-control" value='<s:property value="store.dataDetail.updateDate"/>' type="hidden">
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">用户名:</label>
                                                     <div class="col-md-8">
-                                                        <input name="baseUser.username" class="form-control" value='<s:property value="store.dataDetail.username"/>' type="text">
+                                                        <input name="user.username" class="form-control" value='<s:property value="store.dataDetail.username"/>' type="text">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">密码:</label>
                                                     <div class="col-md-8">
-                                                        <input name="baseUser.password"class="form-control" value='<s:property value="store.dataDetail.password"/>' type="password">
+                                                        <input name="user.password"class="form-control" value='<s:property value="store.dataDetail.password"/>' type="password">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -93,7 +93,7 @@
                                                 <div class="form-group">
                                                     <label class="col-lg-3 control-label">电话:</label>
                                                     <div class="col-lg-8">
-                                                        <input name="baseUser.phone" class="form-control" value='<s:property value="store.dataDetail.id"/>' type="text">
+                                                        <input name="user.phone" class="form-control" value='<s:property value="store.dataDetail.id"/>' type="text">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -106,13 +106,16 @@
                                                     <label class="col-lg-3 control-label">角色:</label>
                                                     <div class="col-lg-8">
                                                         <div class="ui-select">
-                                                            <select name="baseUser.baseRole.id" id="user_time_zone" class="form-control">
-                                                                <option value="4">供应商
-                                                                <option value="3">客户
-                                                                <option value="2">小工
-                                                                <option value="1">管理员
-                                                                <option value="5">老板
-                                                            </select>
+                                                             <select name="user.role.id" id="user_time_zone" class="form-control">
+	                                                            <s:iterator value="store.subDataList.get('role')">
+	                                                            	<s:if test="id == store.dataDetail.role.id">
+	                                                            		<option value="<s:property value='id'/>" selected="selected"><s:property value='name'/>
+	                                                            	</s:if>
+	                                                            	<s:else>
+	                                                            		<option value="<s:property value='id'/>"><s:property value='name'/>
+	                                                            	</s:else>
+	                                                            </s:iterator>
+	                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -126,7 +129,7 @@
                                                     </div>
                                                 </div>
 	                                        </div>
-	                                        </s:form>
+	                                        </form>
 	                                    </div>
 	                                </div>
 	                            </div>

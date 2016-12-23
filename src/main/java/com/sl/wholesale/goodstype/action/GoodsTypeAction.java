@@ -10,7 +10,8 @@
 package com.sl.wholesale.goodstype.action;  
 
 import com.sl.global.action.BaseAction;
-import com.sl.wholesale.entity.hibernate.WsGoodsType;
+import com.sl.wholesale.entity.hibernate.GoodsType;
+import com.sl.wholesale.goodstype.service.GoodsTypeService;
 
 /** 
  * ClassName:GoodsTypeAction <br/> 
@@ -22,7 +23,40 @@ import com.sl.wholesale.entity.hibernate.WsGoodsType;
  * @since    JDK 1.6 
  * @see       
  */
-public class GoodsTypeAction extends BaseAction<WsGoodsType> {
+public class GoodsTypeAction extends BaseAction<GoodsType,GoodsTypeService> {
+	/** 
+	 * serialVersionUID:TODO(用一句话描述这个变量表示什么). 
+	 * @since JDK 1.6 
+	 */ 
+	private static final long serialVersionUID = -390780281560026383L;
+	/**
+	 * 
+	 * Creates a new instance of GoodsTypeAction. 
+	 * 
+	 * @throws ClassNotFoundException
+	 */
+	public GoodsTypeAction() throws ClassNotFoundException{
+		super(GoodsType.class, GoodsTypeService.class);
+	}
+	/**
+	 * 新增数据时，接收页面传递过来的值
+	 */
+	private GoodsType goodsType = new GoodsType();
+	
+	public String update(){
+		return super.update(goodsType);
+	}
+	
+	public String save(){
+		return super.save(goodsType);
+	}
+	
+	public GoodsType getGoodsType() {
+		return goodsType;
+	}
+	public void setGoodsType(GoodsType goodsType) {
+		this.goodsType = goodsType;
+	}
 
 }
   

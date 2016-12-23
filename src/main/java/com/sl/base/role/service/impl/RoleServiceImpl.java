@@ -9,12 +9,10 @@
   
 package com.sl.base.role.service.impl;  
 
-import java.util.List;
-
-import com.sl.base.entity.hibernate.BaseRole;
+import com.sl.base.entity.hibernate.Role;
 import com.sl.base.role.dao.RoleDao;
 import com.sl.base.role.service.RoleService;
-import com.sl.global.entity.QueryBean;
+import com.sl.global.service.impl.BaseServiceImpl;
 
 /** 
  * ClassName:RoleServiceImpl <br/> 
@@ -26,44 +24,9 @@ import com.sl.global.entity.QueryBean;
  * @since    JDK 1.6 
  * @see       
  */
-public class RoleServiceImpl implements RoleService {
-	private RoleDao roleDao;
-	@Override
-	public List<BaseRole> list() {
-		// TODO Auto-generated method stub
-		return null;
+public class RoleServiceImpl extends BaseServiceImpl<Role, RoleDao> implements RoleService {
+	public RoleServiceImpl() {
+		super(Role.class, RoleDao.class);
 	}
-
-	@Override
-	public List<BaseRole> query(QueryBean queryRoleBean) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public BaseRole queryById(long id) {
-		return roleDao.queryById(id);
-	}
-
-	@Override
-	public int deleteById(long id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int save(BaseRole baseRole) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public RoleDao getRoleDao() {
-		return roleDao;
-	}
-
-	public void setRoleDao(RoleDao roleDao) {
-		this.roleDao = roleDao;
-	}
-
 }
   

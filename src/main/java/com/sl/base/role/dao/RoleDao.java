@@ -9,7 +9,7 @@
   
 package com.sl.base.role.dao;  
 
-import com.sl.base.entity.hibernate.BaseRole;
+import com.sl.base.entity.hibernate.Role;
 import com.sl.global.dao.BaseDao;
 
 /** 
@@ -22,7 +22,7 @@ import com.sl.global.dao.BaseDao;
  * @since    JDK 1.6 
  * @see       
  */
-public interface RoleDao extends BaseDao<BaseRole, Long> {
+public interface RoleDao extends BaseDao<Role, Long> {
 
 }
   

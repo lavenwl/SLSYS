@@ -9,12 +9,9 @@
   
 package com.sl.portal.login.action;  
 
-import java.util.ArrayList;
-
-import antlr.collections.List;
-
-import com.sl.base.entity.hibernate.BaseUser;
 import com.sl.global.action.BaseAction;
+import com.sl.global.entity.BaseEntity;
+import com.sl.global.service.BaseService;
 
 /** 
  * ClassName:LoginAction <br/> 
@@ -25,7 +22,7 @@ import com.sl.global.action.BaseAction;
  * @since    JDK 1.6 
  * @see       
  */
-public class LoginAction extends BaseAction<BaseUser>{
+public class LoginAction extends BaseAction<BaseEntity,BaseService>{
 	
 	/** 
 	 * serialVersionUID:TODO(用一句话描述这个变量表示什么). 
@@ -33,48 +30,9 @@ public class LoginAction extends BaseAction<BaseUser>{
 	 */ 
 	private static final long serialVersionUID = -7572466147970157505L;
 
-	private BaseUser user;
-	
-	@Override
-	public String execute() {
-		user = new BaseUser();
-		user.setId(2);
-		ArrayList<BaseUser> list = new ArrayList<BaseUser>();
-		list.add(new BaseUser());
-		store.setName("test");
-		store.setDataList(list);
-		return "success";
+	public LoginAction() throws ClassNotFoundException{
+		super(BaseEntity.class, BaseService.class);
 	}
-
-	
-	public String list() {
-		user = new BaseUser();
-		user.setId(2);
-		ArrayList<BaseUser> list = new ArrayList<BaseUser>();
-		list.add(new BaseUser());
-		store.setName("test");
-		store.setDataList(list);
-		return "success";
-	}
-	
-	public String login(){
-		user = new BaseUser();
-		user.setId(2);
-		ArrayList<BaseUser> list = new ArrayList<BaseUser>();
-		list.add(new BaseUser());
-		store.setName("test");
-		store.setDataList(list);
-		return "success";
-	}
-
-	public BaseUser getUser() {
-		return user;
-	}
-
-	public void setUser(BaseUser user) {
-		this.user = user;
-	}
-	
 	
 }
   

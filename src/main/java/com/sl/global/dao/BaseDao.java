@@ -11,8 +11,6 @@ package com.sl.global.dao;
 
 import java.io.Serializable;
 import java.util.List;
-
-import com.sl.base.entity.hibernate.BaseUser;
 import com.sl.global.entity.QueryBean;
 
 /** 
@@ -25,14 +23,14 @@ import com.sl.global.entity.QueryBean;
  * @since    JDK 1.6 
  * @see       
  */
-public interface BaseDao<T, PK extends Serializable> {
+public interface BaseDao<E, PK extends Serializable> {
 	
 	/**
 	 * 保存对象
 	 * @param object
 	 * @return object
 	 */
-	public T save(T object);
+	public E save(E object);
 
 	/**
 	 * 通过ID删除对象
@@ -45,26 +43,26 @@ public interface BaseDao<T, PK extends Serializable> {
 	 * 
 	 * @param object
 	 */
-	public void update(T object);
+	public void update(E object);
 	
 	/**
 	 * 保存或更新对象
 	 * @param object
 	 */
-	public void saveOrUpdate(T object);
+	public void saveOrUpdate(E object);
 	
 	/**
 	 * 获取当前对象里的所有记录
 	 * @return List-T
 	 */
-	public List<T> queryAll();
+	public List<E> queryAll();
 	
 	/**
 	 * 通过ID获取对象
 	 * @param id
 	 * @return T
 	 */
-	public T queryById(PK id);
+	public E queryById(PK id);
 	
 	/**
 	 * 
@@ -74,7 +72,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	 * @return 
 	 * @since JDK 1.6
 	 */
-	public List<T> queryUsingAll();
+	public List<E> queryUsingAll();
 	
 	/**
 	 * 
@@ -84,7 +82,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	 * @return 
 	 * @since JDK 1.6
 	 */
-	public List<T> queryByHql(String hql, Object... args);
+	public List<E> queryByHql(String hql, Object... args);
 	
 	/**
 	 * 
@@ -95,7 +93,7 @@ public interface BaseDao<T, PK extends Serializable> {
 	 * @return 查询列表
 	 * @since JDK 1.6
 	 */
-	public List<T> queryByQueryBean(QueryBean queryBean);
+	public List<E> queryByQueryBean(QueryBean queryBean);
 
 }
   

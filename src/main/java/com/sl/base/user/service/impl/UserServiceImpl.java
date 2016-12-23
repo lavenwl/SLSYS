@@ -9,13 +9,10 @@
   
 package com.sl.base.user.service.impl;  
 
-import java.util.List;
-
-import com.sl.base.entity.hibernate.BaseUser;
+import com.sl.base.entity.hibernate.User;
 import com.sl.base.role.service.RoleService;
 import com.sl.base.user.dao.UserDao;
 import com.sl.base.user.service.UserService;
-import com.sl.global.entity.QueryBean;
 import com.sl.global.service.impl.BaseServiceImpl;
 
 /** 
@@ -28,65 +25,37 @@ import com.sl.global.service.impl.BaseServiceImpl;
  * @since    JDK 1.6 
  * @see       
  */
-public class UserServiceImpl implements UserService{
-	private UserDao userDao;
+public class UserServiceImpl extends BaseServiceImpl<User, UserDao> implements UserService{
 	private RoleService roleService;
-	@Override
-	public List<BaseUser> list() {
-		return userDao.queryUsingAll();
+	public UserServiceImpl(){
+		super(User.class, UserDao.class);
 	}
 	
 	@Override
-	public List<BaseUser> query(QueryBean queryUserBean) {
-		return userDao.queryByQueryBean(queryUserBean);
-	}
-	
-	public UserDao getUserDao() {
-		return userDao;
-	}
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
-	}
-
-	@Override
-	public BaseUser queryById(long id) {
-		return userDao.queryById(id);
-	}
-
-	@Override
-	public int deleteById(long id) {
-		BaseUser baseUser = queryById(id);
-		baseUser.setState(0);
-		userDao.update(baseUser);
+	public int save(User user) {
+		Long id = user.getRole().getId();
+		//处理内部bean对象
+		//TODO 测试这里的逻辑是否可以去掉
+		user.setRole(roleService.queryById(user.getRole().getId()));
+		super.save(user);
 		return 1;
 	}
 
 	@Override
-	public int save(BaseUser baseUser) {
-		Long id = baseUser.getBaseRole().getId();
+	public int update(User user) {
+		Long id = user.getRole().getId();
 		//处理内部bean对象
-		baseUser.setBaseRole(roleService.queryById(baseUser.getBaseRole().getId()));
-		userDao.save(baseUser);
+		//TODO 测试这里的逻辑是否可以去掉
+		user.setRole(roleService.queryById(user.getRole().getId()));
+		super.update(user);
 		return 1;
 	}
 
 	public RoleService getRoleService() {
 		return roleService;
 	}
-
 	public void setRoleService(RoleService roleService) {
 		this.roleService = roleService;
 	}
-
-	@Override
-	public int update(BaseUser baseUser) {
-		Long id = baseUser.getBaseRole().getId();
-		//处理内部bean对象
-		baseUser.setBaseRole(roleService.queryById(baseUser.getBaseRole().getId()));
-		userDao.update(baseUser);
-		return 1;
-	}
-
-
 }
   

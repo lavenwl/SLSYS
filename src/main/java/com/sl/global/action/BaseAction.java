@@ -9,24 +9,23 @@
   
 package com.sl.global.action;  
 
-import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.struts2.interceptor.CookiesAware;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.util.ServletContextAware;
-
 import com.opensymphony.xwork2.ActionSupport;
-import com.sl.base.entity.hibernate.BaseUser;
+import com.sl.global.entity.BaseEntity;
 import com.sl.global.entity.Store;
 import com.sl.global.service.BaseService;
+import com.sl.global.util.SpringContextUtil;
+import com.sl.global.util.StringUtil;
 import com.sl.portal.entity.Menu;
 
 /** 
@@ -40,7 +39,8 @@ import com.sl.portal.entity.Menu;
  * @since    JDK 1.6 
  * @see       
  */
-public class BaseAction<T> extends ActionSupport implements ServletResponseAware, ServletRequestAware, SessionAware, CookiesAware,ServletContextAware{
+@SuppressWarnings("rawtypes")
+public class BaseAction<E extends BaseEntity,S extends BaseService> extends ActionSupport implements ServletResponseAware, ServletRequestAware, SessionAware, CookiesAware,ServletContextAware{
 	
 	/** 
 	 * serialVersionUID:序列化ID. 
@@ -50,32 +50,41 @@ public class BaseAction<T> extends ActionSupport implements ServletResponseAware
 	public HttpServletResponse response;
 	public HttpServletRequest request;
 	public ServletContext context;
-	@SuppressWarnings("rawtypes")
 	public Map session;
-	@SuppressWarnings("rawtypes")
 	public Map cookies;
 	public Store store;
-
+	public Class<E> baseEntityClass;
+	public Class<S> baseServiceClass;
+	public S baseService;
+	
+	public BaseAction(Class<E> baseEntityClass,Class<S> baseServiceClass) throws ClassNotFoundException{
+			this.baseEntityClass = baseEntityClass;
+			this.baseServiceClass = baseServiceClass;
+	}
 
 	/**
 	 * action默认执行方法. 
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
 	 */
 	public String execute(){
-		return "success";
+		return list();
 	}
 	
 	/**
 	 * 
 	 * list:获取对象集合. <br/> 
-	 * 根据参数获取对象集合.<br/> 
+	 * 获取数据库对应表的所有有效（state=1）对象的集合.<br/> 
+	 * 默认都要过滤state字段为有效时才为有效数据获取集合。
 	 * 
 	 * @author laven 
 	 * @return 
 	 * @since JDK 1.6
 	 */
+	@SuppressWarnings("unchecked")
 	public String list(){
-		return "success";
+		List<E> entityList = getBaseService().list();
+		store.setDataList(entityList);
+		return "list";
 	}
 	/**
 	 * 
@@ -85,20 +94,32 @@ public class BaseAction<T> extends ActionSupport implements ServletResponseAware
 	 * @return 
 	 * @since JDK 1.6
 	 */
+	@SuppressWarnings("unchecked")
 	public String detail(){
-		return "success";
+		long id = Long.valueOf(request.getParameter("id"));
+		//TODO 测试这里是否可以去掉这个强转操作
+		E entity = (E) getBaseService().queryById(id);
+		store.setDataDetail(entity);
+		return "detail";
 	}
 	
 	/**
 	 * 
 	 * add:添加对象. <br/> 
-	 * 
+	 * 跳转到添加的页面，初始化对象的默认参数<br/>
 	 * @author laven 
 	 * @return 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 * @since JDK 1.6
 	 */
-	public String add(){
-		return "success";
+	@SuppressWarnings("unchecked")
+	public String add() throws InstantiationException, IllegalAccessException{
+		E baseEntity = baseEntityClass.newInstance();
+		baseEntity.setCreateDate(new Date());
+		baseEntity.setUpdateDate(new Date());
+		store.setDataDetail(baseEntity);
+		return "add";
 	}
 	
 	/**
@@ -109,8 +130,12 @@ public class BaseAction<T> extends ActionSupport implements ServletResponseAware
 	 * @return 需要跳转的页面
 	 * @since JDK 1.6
 	 */
+	@SuppressWarnings("unchecked")
 	public String edit(){
-		return "success";
+		long id = Long.valueOf(request.getParameter("id"));
+		E entity = (E) getBaseService().queryById(id);
+		store.setDataDetail(entity);
+		return "edit";
 	}
 	
 	/**
@@ -121,8 +146,12 @@ public class BaseAction<T> extends ActionSupport implements ServletResponseAware
 	 * @return 
 	 * @since JDK 1.6
 	 */
-	public String update(){
-		return "success";
+	@SuppressWarnings("unchecked")
+	public String update(E baseEntity){
+		if(null != baseEntity){
+			getBaseService().update(baseEntity);
+		}
+		return "update";
 	}
 	
 	/**
@@ -134,7 +163,9 @@ public class BaseAction<T> extends ActionSupport implements ServletResponseAware
 	 * @since JDK 1.6
 	 */
 	public String delete(){
-		return "success";
+		long id = Long.valueOf(request.getParameter("id"));
+		getBaseService().deleteById(id);
+		return "delete";
 	}
 	/**
 	 * 
@@ -144,8 +175,12 @@ public class BaseAction<T> extends ActionSupport implements ServletResponseAware
 	 * @return 
 	 * @since JDK 1.6
 	 */
-	public String save(){
-		return "success";
+	@SuppressWarnings("unchecked")
+	public String save(E baseEntity){
+		if(null != baseEntity){
+			getBaseService().save(baseEntity);
+		}
+		return "save";
 	}
 	
 	
@@ -154,15 +189,14 @@ public class BaseAction<T> extends ActionSupport implements ServletResponseAware
 		this.cookies = cookies;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 		if(null == store){
-			store = new Store();
+			store = new Store(baseEntityClass);
 			store.setMenuList(Menu.getTestData());
-			
 		}
-		session.put("page", "userlist");
 		session.put("storekey", store);
 	}
 
@@ -181,12 +215,25 @@ public class BaseAction<T> extends ActionSupport implements ServletResponseAware
 		this.context = context;
 	}
 	
-	public Store<T> getStore() {
+	@SuppressWarnings("unchecked")
+	public Store<E> getStore() {
 		return store;
 	}
 
-	public void setStore(Store<T> store) {
+	public void setStore(Store<E> store) {
 		this.store = store;
 	}
+
+	@SuppressWarnings("unchecked")
+	public S getBaseService(){
+		if(baseService == null){
+			baseService = (S) SpringContextUtil.getBean(StringUtil.lowerFirstChar(baseServiceClass.getSimpleName()));
+		}
+		return baseService;
+	}
+	public void setBaseService(Class<S> baseServiceClass) throws InstantiationException, IllegalAccessException {
+		this.baseService = baseServiceClass.newInstance();
+	}
+	
 }
   

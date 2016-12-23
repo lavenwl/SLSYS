@@ -26,10 +26,7 @@
 	            <!-- CONTENT 网页内容开始--> 
 			    <div class="content-wrap">
 			                <div class="row">
-			
-			
 			                    <div class="col-sm-12">
-			
 			                        <div class="nest" id="FootableClose">
 			                            <div class="title-alt">
 			                                <h6>用户列表</h6>
@@ -43,13 +40,12 @@
 			                                        <span class="entypo-up-open"></span>
 			                                    </a>
 			                                </div>
-											<button onclick="window.location.href='user!add.action'" type="button" class="btn btn-primary" style="margin: 8px 20px 0px 0px; float: right;">
+											<button onclick="window.location.href='<s:property value="#session.actionName"/>!add.action'" type="button" class="btn btn-primary" style="margin: 8px 20px 0px 0px; float: right;">
 			                                    <span class="entypo-plus-squared"></span>&nbsp;&nbsp;新增</button>
 			                            </div>
 			
 			                            <div class="body-nest" id="Footable">
 			
-			                               
 			                                <table class="table-striped footable-res footable metro-blue" data-page-size="6">
 			                                    <thead>
 			                                        <tr>
@@ -60,7 +56,7 @@
 			                                            <th>电话号码</th>
 			                                            <th data-hide="phone,tablet">创建时间</th>
 			                                            <th data-hide="phone,tablet">修改时间</th>
-			                                            <th data-hide="phone">数据状态</th>
+			                                        <!--     <th data-hide="phone">数据状态</th>  -->
 			                                            <th>操作</th>
 			                                        </tr>
 			                                    </thead>
@@ -70,14 +66,17 @@
 			                                                <td><s:property value="id"/></td>
 			                                                <td><s:property value="username"/></td>
 			                                                <td><s:property value="password"/></td>
-			                                                <td><s:property value="baseRole.id"/></td>
+			                                                 <td>
+				                                                <s:set var="roleId" value="role.id"></s:set>
+				                                                <s:property value="store.subDataMap.get('role').get(#roleId).name"/>
+			                                                </td>
 			                                                <td><s:property value="phone"/></td>
 			                                                <td><s:property value="createDate"/></td>
 			                                                <td data-value="1"><s:property value="updateDate"/></td>
-			                                                <td data-value="1"><span class="status-metro status-active" title="Active"><s:property value="state"/></span></td>
-			                                                <td>
+			                                             <%--    <td data-value="1"><span class="status-metro status-active" title="Active"><s:property value="state"/></span></td>
+			                                                  --%><td>
 			                                                	 <div class="btn-group">
-								                                    <button onclick="window.location.href='user!edit.action?id=<s:property value="id"/>'" type="button" class="btn btn-info">
+								                                    <button onclick="window.location.href='<s:property value="#session.actionName"/>!edit.action?id=<s:property value="id"/>'" type="button" class="btn btn-info">
 							                                    		<span class="entypo-pencil"></span>&nbsp;&nbsp;修改
 							                                    	</button> 
 								                                    <div class="btn-group">
@@ -85,7 +84,7 @@
 									                                        <span class="caret"></span>
 									                                    </button>
 									                                    <ul role="menu" class="dropdown-menu">
-									                                        <li><a href="user!detail.action?id=<s:property value='id'/>">详情</a>
+									                                        <li><a href="<s:property value='#session.actionName'/>!detail.action?id=<s:property value='id'/>">详情</a>
 									                                        </li>
 									                                        <li><a href="#">标记</a>
 									                                        </li>
@@ -96,7 +95,7 @@
 									                                        </li>
 									                                    </ul>
 								                                    </div>
-								                                    <button onclick="window.location.href='user!delete.action?id=<s:property value="id"/>'" type="button" class="btn btn-danger">
+								                                    <button onclick="window.location.href='<s:property value="#session.actionName"/>!delete.action?id=<s:property value="id"/>'" type="button" class="btn btn-danger">
 							                                    	<span class="entypo-cancel-squared"></span>&nbsp;&nbsp;删除
 							                                    	</button>
 								                                </div>
@@ -107,7 +106,7 @@
 			                                    </tbody>
 			                                    <tfoot>
 			                                        <tr>
-			                                            <td colspan="5">
+			                                            <td colspan="8">
 			                                                <div class="pagination pagination-centered"></div>
 			                                            </td>
 			                                        </tr>
@@ -119,7 +118,7 @@
 			                </div>
 			            </div>
 			          
-			    <div class="content-wrap">
+			  <%--   <div class="content-wrap">
 			                <div class="row">
 			                    <div class="col-sm-12">
 			
@@ -176,7 +175,7 @@
 			                        </div>
 			                    </div>
 			                </div>
-			            </div>
+			            </div> --%>
 			    <!-- CONTENT 网页内容结束--> 
 	            
 	          	<%@include file="../../common/foot.jsp" %> 
@@ -200,4 +199,4 @@
 	    </script>  
 	</body>
 </html>
-<s:debug/><s:property value="pagein"/>
+

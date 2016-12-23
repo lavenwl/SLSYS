@@ -9,12 +9,9 @@
   
 package com.sl.base.role.dao.impl;  
 
-import java.util.List;
-
-import com.sl.base.entity.hibernate.BaseRole;
+import com.sl.base.entity.hibernate.Role;
 import com.sl.base.role.dao.RoleDao;
 import com.sl.global.dao.HibernateDao;
-import com.sl.global.entity.QueryBean;
 
 /** 
  * ClassName:RoleDaoImpl <br/> 
@@ -25,10 +22,10 @@ import com.sl.global.entity.QueryBean;
  * @since    JDK 1.6 
  * @see       
  */
-public class RoleDaoImpl extends HibernateDao<BaseRole, Long> implements RoleDao {
+public class RoleDaoImpl extends HibernateDao<Role, Long> implements RoleDao {
 
 	public RoleDaoImpl() {
-		super(BaseRole.class);
+		super(Role.class);
 	}
 }
   

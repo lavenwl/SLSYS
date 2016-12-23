@@ -2,12 +2,12 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<table-filter match-name="ws_company" match-catalog="slsys"></table-filter>
-	<table-filter match-name="ws_goods" match-catalog="slsys"></table-filter>
-	<table-filter match-name="ws_goods_type" match-catalog="slsys"></table-filter>
-	<table-filter match-name="ws_item" match-catalog="slsys"></table-filter>
-	<table-filter match-name="ws_order" match-catalog="slsys"></table-filter>
-	<table-filter match-name="ws_sale_mode" match-catalog="slsys"></table-filter>
-	<table-filter match-name="ws_user_info" match-catalog="slsys"></table-filter>
-	<table-filter match-name="base_user" match-catalog="slsys"></table-filter>
+	<table-filter match-name="company" match-catalog="slsys"></table-filter>
+	<table-filter match-name="goods" match-catalog="slsys"></table-filter>
+	<table-filter match-name="goods_type" match-catalog="slsys"></table-filter>
+	<table-filter match-name="item" match-catalog="slsys"></table-filter>
+	<table-filter match-name="order" match-catalog="slsys"></table-filter>
+	<table-filter match-name="sale_mode" match-catalog="slsys"></table-filter>
+	<table-filter match-name="user" match-catalog="slsys"></table-filter>
+	<table-filter match-name="user_info" match-catalog="slsys"></table-filter>
 </hibernate-reverse-engineering>

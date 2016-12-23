@@ -3,26 +3,34 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
     "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
+	<!-- 指定Web应用的默认编码集 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
 	<!-- 动态方法调用 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	
-	<package name="global" extends="struts-default">
-		<default-action-ref name="notFound"/>
+	<!-- 父类包 调度监听使用 -->
+    <package name="Struts-sl" extends="struts-default" namespace="/">
+    	<!-- 定义全局拦截器链  struts--> 
+	    <interceptors>   
+	    	<interceptor name="superInterceptor" class="com.sl.global.interceptor.SuperInterceptor"></interceptor> 
+            <interceptor name="checkInterceptor" class="com.sl.global.interceptor.CheckInterceptor"></interceptor>     
+            <interceptor-stack name="softDefaultStack">   
+            	<interceptor-ref name="superInterceptor"></interceptor-ref> 
+            	<interceptor-ref name="checkInterceptor"></interceptor-ref> 
+                <interceptor-ref name="defaultStack"></interceptor-ref>   
+            </interceptor-stack>   
+        </interceptors>
+        <default-interceptor-ref name="softDefaultStack"></default-interceptor-ref>
+        <!-- 定义全局变量 -->
 		<global-results>
-			<result name="error500">/WEB-INF/jsp/500.jsp</result>
-		</global-results>
-		<global-allowed-methods>regex:.*</global-allowed-methods>
-		<global-exception-mappings>
-			<exception-mapping result="error500" exception="java.lang.Exception"></exception-mapping>
-		</global-exception-mappings>
-		<action name="notFound">
-			<result name="success" type="redirect">
-				<param name="location">/WEB-INF/jsp/404.jsp</param>
-			</result>
-		</action>
+	        <result name="relogin">/WEB-INF/jsp/portal/login.jsp</result>
+	        <result name="noauth">/WEB-INF/jsp/portal/login.jsp</result>
+	    </global-results>
 	</package>
 	
-	<package name="portal" extends="struts-default">
+
+	
+	<package name="portal" extends="Struts-sl">
 	<global-allowed-methods>regex:.*</global-allowed-methods>
 		<action name="login" class="com.sl.portal.login.action.LoginAction">
 			<result name="success">/WEB-INF/jsp/index.jsp</result>
@@ -32,34 +40,70 @@
 		</action>
 	</package>
 	
-	<package name="base" extends="struts-default">
+	<package name="base" extends="Struts-sl">
 		<global-allowed-methods>regex:.*</global-allowed-methods>
 		<action name="user" class="com.sl.base.user.action.UserAction">
 			<result name="success">/WEB-INF/jsp/success.jsp</result>
-			<result name="userList">/WEB-INF/jsp/base/user/userList.jsp</result>
-			<result name="userDetail">/WEB-INF/jsp/base/user/userDetail.jsp</result>
-			<result name="userEdit">/WEB-INF/jsp/base/user/userEdit.jsp</result>
-			<result name="userSave" type="redirectAction">user!list</result>
-			<result name="userDelete" type="redirectAction">user!list</result>
-			<result name="userUpdate" type="redirectAction">user!list</result>
-			<result name="userAdd">/WEB-INF/jsp/base/user/userAdd.jsp</result>
+			<result name="list">/WEB-INF/jsp/base/user/userList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/base/user/userDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/base/user/userEdit.jsp</result>
+			<result name="save" type="redirectAction">user!list</result>
+			<result name="delete" type="redirectAction">user!list</result>
+			<result name="update" type="redirectAction">user!list</result>
+			<result name="add">/WEB-INF/jsp/base/user/userAdd.jsp</result>
 		</action>
+		<action name="role" class="com.sl.base.role.action.RoleAction">
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="list">/WEB-INF/jsp/base/role/roleList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/base/role/roleDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/base/role/roleEdit.jsp</result>
+			<result name="save" type="redirectAction">role!list</result>
+			<result name="delete" type="redirectAction">role!list</result>
+			<result name="update" type="redirectAction">role!list</result>
+			<result name="add">/WEB-INF/jsp/base/role/roleAdd.jsp</result>
+		</action>
+		
 		<action name="upload" class="com.sl.base.upload.action.UploadAction">
 			
 		</action>
 	</package>
 	
-	<package name="ws" extends="struts-default">
+	<package name="ws" extends="Struts-sl">
 	 <global-allowed-methods>regex:.*</global-allowed-methods>
+	 	<action name="company" class="com.sl.wholesale.company.action.CompanyAction">
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="list">/WEB-INF/jsp/ws/company/companyList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/ws/company/companyDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/ws/company/companyEdit.jsp</result>
+			<result name="save" type="redirectAction">company!list</result>
+			<result name="delete" type="redirectAction">company!list</result>
+			<result name="update" type="redirectAction">company!list</result>
+			<result name="add">/WEB-INF/jsp/ws/company/companyAdd.jsp</result>
+		</action>
 		<action name="order" class="com.sl.wholesale.order.action.OrderAction">
 			<result name="success">/WEB-INF/jsp/index.jsp</result>
 		</action>
 		<action name="goods" class="com.sl.wholesale.goods.action.GoodsAction">
-			<result name="success">/WEB-INF/jsp/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="list">/WEB-INF/jsp/ws/goods/goodsList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/ws/goods/goodsDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/ws/goods/goodsEdit.jsp</result>
+			<result name="save" type="redirectAction">goods!list</result>
+			<result name="delete" type="redirectAction">goods!list</result>
+			<result name="update" type="redirectAction">goods!list</result>
+			<result name="add">/WEB-INF/jsp/ws/goods/goodsAdd.jsp</result>
 		</action>
 		<action name="goodsType" class="com.sl.wholesale.goodstype.action.GoodsTypeAction">
-			<result name="success">/WEB-INF/jsp/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="list">/WEB-INF/jsp/ws/goodsType/goodsTypeList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/ws/goodsType/goodsTypeDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/ws/goodsType/goodsTypeEdit.jsp</result>
+			<result name="save" type="redirectAction">goodsType!list</result>
+			<result name="delete" type="redirectAction">goodsType!list</result>
+			<result name="update" type="redirectAction">goodsType!list</result>
+			<result name="add">/WEB-INF/jsp/ws/goodsType/goodsTypeAdd.jsp</result>
 		</action>
+		
 	</package>
  
 </struts>

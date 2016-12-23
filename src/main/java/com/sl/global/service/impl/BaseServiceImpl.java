@@ -10,8 +10,12 @@
 package com.sl.global.service.impl;  
 
 import java.util.List;
-
+import com.sl.global.dao.BaseDao;
+import com.sl.global.entity.BaseEntity;
+import com.sl.global.entity.QueryBean;
 import com.sl.global.service.BaseService;
+import com.sl.global.util.SpringContextUtil;
+import com.sl.global.util.StringUtil;
 
 /** 
  * ClassName:BaseServiceImpl <br/> 
@@ -23,13 +27,58 @@ import com.sl.global.service.BaseService;
  * @since    JDK 1.6 
  * @see       
  */
-public class BaseServiceImpl<T> implements BaseService<T> {
+public class BaseServiceImpl<E extends BaseEntity, D extends BaseDao<E, Long>> implements BaseService<E, D> {
 
-	@Override
-	public List<T> list() {
-		// TODO Auto-generated method stub
-		return null;
+	private D baseDao;
+	private Class<E> baseEntityClass;
+	private Class<D> baseDaoClass;
+	public BaseServiceImpl(Class<E> baseEntityClass, Class<D> baseDaoClass){
+			this.baseEntityClass = baseEntityClass;
+			this.baseDaoClass = baseDaoClass;
 	}
 
+	@Override
+	public List<E> list() {
+		return getBaseDao().queryUsingAll();
+	}
+	
+	@Override
+	public List<E> query(QueryBean queryBean) {
+		return getBaseDao().queryByQueryBean(queryBean);
+	}
+
+	@Override
+	public E queryById(long id) {
+		return getBaseDao().queryById(id);
+	}
+
+	@Override
+	public int deleteById(long id) {
+		E entity = queryById(id);
+		entity.setState(0);
+		getBaseDao().update(entity);
+		return 1;
+	}
+
+	@Override
+	public int save(E entity) {
+		getBaseDao().save(entity);
+		return 1;
+	}
+
+	@Override
+	public int update(E entity) {
+		getBaseDao().update(entity);
+		return 1;
+	}
+
+
+	public D getBaseDao(){
+		if(baseDao == null){
+			baseDao = (D) SpringContextUtil.getBean(StringUtil.lowerFirstChar(baseDaoClass.getSimpleName()));
+		}
+		return baseDao;
+	}
+	
 }
   
