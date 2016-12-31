@@ -1,8 +1,7 @@
 package com.sl.wholesale.entity.hibernate;
 
-// Generated 2016-12-23 23:53:14 by Hibernate Tools 4.0.0
+// Generated 2016-12-30 16:19:21 by Hibernate Tools 4.0.0
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,8 +16,8 @@ public class Order extends BaseEntity implements java.io.Serializable {
 	private Long id;
 	private UserInfo userInfoByPurchase;
 	private UserInfo userInfoBySale;
-	private BigDecimal sumMoney;
-	private BigDecimal money;
+	private double sumMoney;
+	private double money;
 	private Date createDate;
 	private Date updateDate;
 	private Integer state;
@@ -33,8 +32,8 @@ public class Order extends BaseEntity implements java.io.Serializable {
 	}
 
 	public Order(UserInfo userInfoByPurchase, UserInfo userInfoBySale,
-			BigDecimal sumMoney, BigDecimal money, Date createDate,
-			Date updateDate, Integer state, Set items) {
+			double sumMoney, double money, Date createDate, Date updateDate,
+			Integer state, Set items) {
 		this.userInfoByPurchase = userInfoByPurchase;
 		this.userInfoBySale = userInfoBySale;
 		this.sumMoney = sumMoney;
@@ -69,19 +68,19 @@ public class Order extends BaseEntity implements java.io.Serializable {
 		this.userInfoBySale = userInfoBySale;
 	}
 
-	public BigDecimal getSumMoney() {
+	public double getSumMoney() {
 		return this.sumMoney;
 	}
 
-	public void setSumMoney(BigDecimal sumMoney) {
+	public void setSumMoney(double sumMoney) {
 		this.sumMoney = sumMoney;
 	}
 
-	public BigDecimal getMoney() {
+	public double getMoney() {
 		return this.money;
 	}
 
-	public void setMoney(BigDecimal money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
 

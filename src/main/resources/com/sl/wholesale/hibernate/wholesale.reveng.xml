@@ -2,7 +2,15 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<table-filter match-name="company" match-catalog="slsys"></table-filter>
+<type-mapping>
+	<sql-type jdbc-type="DECIMAL" hibernate-type="double" precision="11"
+		scale="4" not-null="false">
+	</sql-type>
+	<sql-type jdbc-type="DECIMAL" hibernate-type="double"
+		precision="11" scale="4" not-null="false">
+	</sql-type>
+</type-mapping>
+<table-filter match-name="company" match-catalog="slsys"></table-filter>
 	<table-filter match-name="goods" match-catalog="slsys"></table-filter>
 	<table-filter match-name="goods_type" match-catalog="slsys"></table-filter>
 	<table-filter match-name="item" match-catalog="slsys"></table-filter>

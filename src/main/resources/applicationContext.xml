@@ -122,4 +122,25 @@
 	</bean>
 	<bean id="goodsService" class="com.sl.wholesale.goods.service.impl.GoodsServiceImpl">
 	</bean>
+	
+	<bean id="itemDao" class="com.sl.wholesale.item.dao.impl.ItemDaoImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory"></property> 
+	</bean>
+	<bean id="itemService" class="com.sl.wholesale.item.service.impl.ItemServiceImpl">
+	</bean>
+	<bean id="orderDao" class="com.sl.wholesale.order.dao.impl.OrderDaoImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory"></property> 
+	</bean>
+	<bean id="orderService" class="com.sl.wholesale.order.service.impl.OrderServiceImpl">
+	</bean>
+	<bean id="saleModeDao" class="com.sl.wholesale.salemode.dao.impl.SaleModeDaoImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory"></property> 
+	</bean>
+	<bean id="saleModeService" class="com.sl.wholesale.salemode.service.impl.SaleModeServiceImpl">
+	</bean>
+	<bean id="userInfoDao" class="com.sl.wholesale.userinfo.dao.impl.UserInfoDaoImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory"></property> 
+	</bean>
+	<bean id="userInfoService" class="com.sl.wholesale.userinfo.service.impl.UserInfoServiceImpl">
+	</bean>
 </beans>

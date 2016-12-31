@@ -82,7 +82,14 @@
 			<result name="add">/WEB-INF/jsp/ws/company/companyAdd.jsp</result>
 		</action>
 		<action name="order" class="com.sl.wholesale.order.action.OrderAction">
-			<result name="success">/WEB-INF/jsp/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="list">/WEB-INF/jsp/ws/order/orderList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/ws/order/orderDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/ws/order/orderEdit.jsp</result>
+			<result name="save" type="redirectAction">order!list</result>
+			<result name="delete" type="redirectAction">order!list</result>
+			<result name="update" type="redirectAction">order!list</result>
+			<result name="add">/WEB-INF/jsp/ws/order/orderAdd.jsp</result>
 		</action>
 		<action name="goods" class="com.sl.wholesale.goods.action.GoodsAction">
 			<result name="success">/WEB-INF/jsp/success.jsp</result>
@@ -104,7 +111,36 @@
 			<result name="update" type="redirectAction">goodsType!list</result>
 			<result name="add">/WEB-INF/jsp/ws/goodsType/goodsTypeAdd.jsp</result>
 		</action>
-		
+		<action name="item" class="com.sl.wholesale.item.action.ItemAction">
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="list">/WEB-INF/jsp/ws/item/itemList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/ws/item/itemDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/ws/item/itemEdit.jsp</result>
+			<result name="save" type="redirectAction">item!list</result>
+			<result name="delete" type="redirectAction">item!list</result>
+			<result name="update" type="redirectAction">item!list</result>
+			<result name="add">/WEB-INF/jsp/ws/item/itemAdd.jsp</result>
+		</action>
+		<action name="saleMode" class="com.sl.wholesale.salemode.action.SaleModeAction">
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="list">/WEB-INF/jsp/ws/saleMode/saleModeList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/ws/saleMode/saleModeDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/ws/saleMode/saleModeEdit.jsp</result>
+			<result name="save" type="redirectAction">saleMode!list</result>
+			<result name="delete" type="redirectAction">saleMode!list</result>
+			<result name="update" type="redirectAction">saleMode!list</result>
+			<result name="add">/WEB-INF/jsp/ws/saleMode/saleModeAdd.jsp</result>
+		</action>
+		<action name="userInfo" class="com.sl.wholesale.userinfo.action.UserInfoAction">
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="list">/WEB-INF/jsp/ws/userInfo/userInfoList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/ws/userInfo/userInfoDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/ws/userInfo/userInfoEdit.jsp</result>
+			<result name="save" type="redirectAction">userInfo!list</result>
+			<result name="delete" type="redirectAction">userInfo!list</result>
+			<result name="update" type="redirectAction">userInfo!list</result>
+			<result name="add">/WEB-INF/jsp/ws/userInfo/userInfoAdd.jsp</result>
+		</action>
 	</package>
  
 </struts>

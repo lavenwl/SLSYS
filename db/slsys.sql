@@ -176,8 +176,8 @@ create table slsys.order
    id                   bigint(32) not null AUTO_INCREMENT comment '唯一索引',
    sale                 bigint(32) comment '销售方',
    purchase             bigint(32) comment '采购方',
-   sum_money            decimal(8,8) default 0.00000000 comment '合计金额',
-   money                decimal(8,8) default 0.00000000 comment '交易金额',
+   sum_money            decimal(11,4) default 0.00000000 comment '合计金额',
+   money                decimal(11,4) default 0.00000000 comment '交易金额',
    create_date          timestamp default CURRENT_TIMESTAMP comment '创建时间',
    update_date          timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
    state                int(32) default 1 comment '数据状态（是否有效）',primary key (id)

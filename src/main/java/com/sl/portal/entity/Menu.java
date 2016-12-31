@@ -88,12 +88,20 @@ public class Menu {
 		Menu menu5 = new Menu("用户管理","portal","user.action",null);
 		Menu menu6 = new Menu("角色管理","portal","role.action",null);
 		Menu menu7 = new Menu("商家管理","ws","company.action",null);
+		Menu menu8 = new Menu("订单管理","ws","order.action",null);
+		Menu menu9 = new Menu("订单详情","ws","item.action",null);
+		Menu menu10 = new Menu("用户详情","ws","userInfo.action",null);
+		Menu menu11 = new Menu("销售模式","ws","saleMode.action",null);
 		List<Menu> list2 = new ArrayList<Menu>();
 		list2.add(menu3);
 		list2.add(menu4);
 		list2.add(menu5);
 		list2.add(menu6);
 		list2.add(menu7);
+		list2.add(menu8);
+		list2.add(menu9);
+		list2.add(menu10);
+		list2.add(menu11);
 		Menu menuF2 = new Menu("平台管理","base","",list2);
 		
 		list.add(menuF1);

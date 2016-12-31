@@ -32,8 +32,21 @@ public class GlobalUtil {
 		Map<String , String> map = new HashMap<String , String>();
 		//用户角色
 		map.put("role", "roleService");
-		//用户类型
+		//商品类型
 		map.put("goodstype", "goodsTypeService");
+		//用户
+		map.put("user", "userService");
+		//用户详情
+		map.put("userinfobypurchase", "userInfoService");
+		map.put("userinfobysale", "userInfoService");
+		//商家
+		map.put("company", "companyService");
+		//订单
+		map.put("order", "orderService");
+		//商品
+		map.put("goods", "goodsService");
+		//销售模式
+		map.put("salemode", "saleModeService");
 		return map;
 	}
 }

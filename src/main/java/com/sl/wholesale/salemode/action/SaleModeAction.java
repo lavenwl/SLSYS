@@ -12,6 +12,9 @@ package com.sl.wholesale.salemode.action;
 import com.sl.global.action.BaseAction;
 import com.sl.global.entity.BaseEntity;
 import com.sl.global.service.BaseService;
+import com.sl.wholesale.entity.hibernate.Goods;
+import com.sl.wholesale.entity.hibernate.SaleMode;
+import com.sl.wholesale.salemode.service.SaleModeService;
 
 /** 
  * ClassName:SaleModeAction <br/> 
@@ -23,9 +26,30 @@ import com.sl.global.service.BaseService;
  * @since    JDK 1.6 
  * @see       
  */
-public class SaleModeAction extends BaseAction<BaseEntity,BaseService> {
+public class SaleModeAction extends BaseAction<SaleMode,SaleModeService> {
 	public SaleModeAction() throws ClassNotFoundException{
-		super(BaseEntity.class, BaseService.class);
+		super(SaleMode.class, SaleModeService.class);
 	}
+	/**
+	 * 新增数据时，接收页面传过来的数据
+	 */
+	private SaleMode saleMode = new SaleMode();
+	
+	public String update(){
+		return super.update(saleMode);
+	}
+	
+	public String save(){
+		return super.save(saleMode);
+	}
+
+	public SaleMode getSaleMode() {
+		return saleMode;
+	}
+
+	public void setSaleMode(SaleMode saleMode) {
+		this.saleMode = saleMode;
+	}
+	
 }
   

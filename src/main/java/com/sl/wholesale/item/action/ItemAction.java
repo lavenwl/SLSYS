@@ -12,6 +12,9 @@ package com.sl.wholesale.item.action;
 import com.sl.global.action.BaseAction;
 import com.sl.global.entity.BaseEntity;
 import com.sl.global.service.BaseService;
+import com.sl.wholesale.entity.hibernate.Goods;
+import com.sl.wholesale.entity.hibernate.Item;
+import com.sl.wholesale.item.service.ItemService;
 
 /** 
  * ClassName:ItemAction <br/> 
@@ -23,9 +26,32 @@ import com.sl.global.service.BaseService;
  * @since    JDK 1.6 
  * @see       
  */
-public class ItemAction extends BaseAction<BaseEntity,BaseService> {
+public class ItemAction extends BaseAction<Item,ItemService> {
 	public ItemAction() throws ClassNotFoundException{
-		super(BaseEntity.class, BaseService.class);
+		super(Item.class, ItemService.class);
 	}
+	
+	/**
+	 * 新增数据时，接收页面传过来的数据
+	 */
+	private Item item = new Item();
+	
+	public String update(){
+		return super.update(item);
+	}
+	
+	public String save(){
+		return super.save(item);
+	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+	
+	
 }
   

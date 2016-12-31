@@ -12,6 +12,9 @@ package com.sl.wholesale.order.action;
 import com.sl.global.action.BaseAction;
 import com.sl.global.entity.BaseEntity;
 import com.sl.global.service.BaseService;
+import com.sl.wholesale.entity.hibernate.Goods;
+import com.sl.wholesale.entity.hibernate.Order;
+import com.sl.wholesale.order.service.OrderService;
 
 /** 
  * ClassName:OrderAction <br/> 
@@ -23,9 +26,30 @@ import com.sl.global.service.BaseService;
  * @since    JDK 1.6 
  * @see       
  */
-public class OrderAction extends BaseAction<BaseEntity,BaseService> {
+public class OrderAction extends BaseAction<Order, OrderService> {
 	public OrderAction() throws ClassNotFoundException{
-		super(BaseEntity.class, BaseService.class);
+		super(Order.class, OrderService.class);
 	}
+	/**
+	 * 新增数据时，接收页面传过来的数据
+	 */
+	private Order order = new Order();
+	
+	public String update(){
+		return super.update(order);
+	}
+	
+	public String save(){
+		return super.save(order);
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+	
 }
   

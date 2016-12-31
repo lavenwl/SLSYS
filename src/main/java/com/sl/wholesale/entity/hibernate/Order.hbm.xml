@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-12-23 23:53:14 by Hibernate Tools 4.0.0 -->
+<!-- Generated 2016-12-30 16:19:22 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
     <class name="com.sl.wholesale.entity.hibernate.Order" table="order" catalog="slsys">
         <id name="id" type="java.lang.Long">
@@ -18,14 +18,14 @@
                 <comment>&#195;&#169;&#226;&#128;&#157;&#226;&#130;&#172;&#195;&#165;&#226;&#128;&#157;&#194;&#174;&#195;&#166;&#226;&#128;&#147;&#194;&#185;</comment>
             </column>
         </many-to-one>
-        <property name="sumMoney" type="big_decimal">
-            <column name="sum_money" precision="8" scale="8">
+        <property name="sumMoney" type="double">
+            <column name="sum_money" precision="11" scale="4">
                 <comment>
                 &#195;&#165;&#194;&#144;&#203;&#134;&#195;&#168;&#194;&#174;&#194;&#161;&#195;&#169;&#226;&#128;&#161;&#226;&#128;&#152;&#195;&#169;&#194;&#162;&#194;&#157;</comment>
             </column>
         </property>
-        <property name="money" type="big_decimal">
-            <column name="money" precision="8" scale="8">
+        <property name="money" type="double">
+            <column name="money" precision="11" scale="4">
                 <comment>
                 &#195;&#164;&#194;&#186;&#194;&#164;&#195;&#166;&#203;&#156;&#226;&#128;&#156;&#195;&#169;&#226;&#128;&#161;&#226;&#128;&#152;&#195;&#169;&#194;&#162;&#194;&#157;</comment>
             </column>
