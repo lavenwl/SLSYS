@@ -47,7 +47,7 @@ public class HibernateDao<E, PK extends Serializable> extends HibernateDaoSuppor
 		Object reobj = super.getHibernateTemplate().save(object);
 		this.getHibernateTemplate().flush();
 		this.getHibernateTemplate().clear();
-		return (E) reobj;
+		return queryById((PK) reobj);
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class HibernateDao<E, PK extends Serializable> extends HibernateDaoSuppor
 
 	@Override
 	public List<E> queryUsingAll() {
-		String hql = " from " + this.persistentClass.getName() + " a where a.state=1";
+		String hql = " from " + this.persistentClass.getName() + " a where a.state<>0";
 		return queryByHql(hql, null);
 	}
 
@@ -111,6 +111,17 @@ public class HibernateDao<E, PK extends Serializable> extends HibernateDaoSuppor
 		return list;
 	}
 
+	public int queryCountByHql(String hql, Object... args){
+		Query q = currentSession().createQuery(hql);
+		if(null != args){
+			for(int i = 0; i < args.length; i++){
+				q.setParameter(i, args[i]);
+			}
+		}
+		Long sum = (Long) q.uniqueResult();
+		
+		return Integer.parseInt(String.valueOf(Long.valueOf(sum)));
+	}
 	@Override
 	public List<E> queryByQueryBean(QueryBean queryBean) {
 		// TODO Auto-generated method stub

@@ -39,17 +39,5 @@ public class SaleModeServiceImpl extends BaseServiceImpl<SaleMode, SaleModeDao> 
 		super(SaleMode.class, SaleModeDao.class);
 	}
 	
-	@Override
-	public int save(SaleMode saleMode) {
-		super.save(saleMode);
-		return 1;
-	}
-
-	@Override
-	public int update(SaleMode saleMode) {
-		super.update(saleMode);
-		return 1;
-	}
-	
 }
   

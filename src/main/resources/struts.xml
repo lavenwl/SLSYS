@@ -90,6 +90,7 @@
 			<result name="delete" type="redirectAction">order!list</result>
 			<result name="update" type="redirectAction">order!list</result>
 			<result name="add">/WEB-INF/jsp/ws/order/orderAdd.jsp</result>
+			<result name="addOrderDetail" type="redirectAction">orderDetail!addTr</result><!-- 没用待删除及方法 -->
 		</action>
 		<action name="goods" class="com.sl.wholesale.goods.action.GoodsAction">
 			<result name="success">/WEB-INF/jsp/success.jsp</result>
@@ -111,15 +112,26 @@
 			<result name="update" type="redirectAction">goodsType!list</result>
 			<result name="add">/WEB-INF/jsp/ws/goodsType/goodsTypeAdd.jsp</result>
 		</action>
-		<action name="item" class="com.sl.wholesale.item.action.ItemAction">
+		<action name="orderDetail" class="com.sl.wholesale.orderdetail.action.OrderDetailAction">
 			<result name="success">/WEB-INF/jsp/success.jsp</result>
-			<result name="list">/WEB-INF/jsp/ws/item/itemList.jsp</result>
-			<result name="detail">/WEB-INF/jsp/ws/item/itemDetail.jsp</result>
-			<result name="edit">/WEB-INF/jsp/ws/item/itemEdit.jsp</result>
-			<result name="save" type="redirectAction">item!list</result>
-			<result name="delete" type="redirectAction">item!list</result>
-			<result name="update" type="redirectAction">item!list</result>
-			<result name="add">/WEB-INF/jsp/ws/item/itemAdd.jsp</result>
+			<result name="list">/WEB-INF/jsp/ws/orderDetail/orderDetailList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/ws/orderDetail/orderDetailDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/ws/orderDetail/orderDetailEdit.jsp</result>
+			<result name="save" type="redirectAction">orderDetail!list</result>
+			<result name="delete" type="redirectAction">orderDetail!list</result>
+			<result name="update" type="redirectAction">orderDetail!list</result>
+			<result name="add">/WEB-INF/jsp/ws/orderDetail/orderDetailAdd.jsp</result>
+			<result name="addTr">/WEB-INF/jsp/ws/orderDetail/orderDetailTr.jsp</result>
+		</action>
+		<action name="price" class="com.sl.wholesale.price.action.PriceAction">
+			<result name="success">/WEB-INF/jsp/success.jsp</result>
+			<result name="list">/WEB-INF/jsp/ws/price/priceList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/ws/price/priceDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/ws/price/priceEdit.jsp</result>
+			<result name="save" type="redirectAction">price!list</result>
+			<result name="delete" type="redirectAction">price!list</result>
+			<result name="update" type="redirectAction">price!list</result>
+			<result name="add">/WEB-INF/jsp/ws/price/priceAdd.jsp</result>
 		</action>
 		<action name="saleMode" class="com.sl.wholesale.salemode.action.SaleModeAction">
 			<result name="success">/WEB-INF/jsp/success.jsp</result>

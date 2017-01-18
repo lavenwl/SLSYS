@@ -32,13 +32,12 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserDao> implements U
 	}
 	
 	@Override
-	public int save(User user) {
+	public User save(User user) {
 		Long id = user.getRole().getId();
 		//处理内部bean对象
 		//TODO 测试这里的逻辑是否可以去掉
 		user.setRole(roleService.queryById(user.getRole().getId()));
-		super.save(user);
-		return 1;
+		return super.save(user);
 	}
 
 	@Override

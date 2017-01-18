@@ -9,7 +9,10 @@
   
 package com.sl.wholesale.order.dao.impl;  
 
+import java.util.Date;
+
 import com.sl.global.dao.HibernateDao;
+import com.sl.global.util.DateUtil;
 import com.sl.wholesale.entity.hibernate.Goods;
 import com.sl.wholesale.entity.hibernate.Order;
 import com.sl.wholesale.goods.dao.GoodsDao;
@@ -31,5 +34,14 @@ public class OrderDaoImpl extends HibernateDao<Order, Long> implements OrderDao 
 		super(Order.class);
 	}
 
+	@Override
+	public int getOrderSumToday() {
+		Date startDate = DateUtil.getStartOfToDayDate();
+		Date endDate = DateUtil.getStartOfTomorrowDate();
+		String hql = "select count(*) from Order a where a.createDate >= ? and a.createDate < ? and a.state <> 0";
+		return queryCountByHql(hql,startDate, endDate);
+	}
+
+	
 }
   

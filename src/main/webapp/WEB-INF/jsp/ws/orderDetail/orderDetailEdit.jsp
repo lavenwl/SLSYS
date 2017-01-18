@@ -25,7 +25,7 @@
 	                            <!-- BLANK PAGE-->
 	                            <div style="margin:-20px 15px;" class="nest" id="Blank_PageClose">
 	                                <div class="title-alt">
-	                                    <h6>新增商户</h6>
+	                                    <h6>编辑资料</h6>
 	                                    <div class="titleClose">
 	                                        <a class="gone" href="#Blank_PageClose">
 	                                            <span class="entypo-cancel"></span>
@@ -42,19 +42,20 @@
 	
 	                                    <div class="row">
 	                                        <!-- left column -->
-	                                         <form  role="form" action="<s:property value='#session.actionName'/>!save.action" method="post">
+	                                        <form class="form-horizontal" role="form" action="<s:property value='#session.actionName'/>!update.action" method="post">
 	                                        <div class="col-md-3">
 	                                            <div class="text-center">
-	                                                <img id="uploadShow" src="http://placehold.it/150" class="avatar img-circle" alt="avatar">
+	                                                <img id="uploadShow" src='<s:property value="store.dataDetail.url"/>' class="avatar img-circle" alt="avatar">
 	                                                <h6 id="uploadMessage">上传图片详情...</h6>
 													<div class="input-group">
 	                                                    <span class="input-group-btn">
 	                                                        <span class="btn btn-primary btn-file">
 	                                                            选择<input id="uploadFacade" name="uploadFile" type="file" accept=".png,.jpg,.gif">
-	                                                            <input id="uploadUrl" name="item.url" type="hidden"/>
+	                                                            <input id="uploadUrl" name="orderDetail.url" type="hidden"/>
 	                                                        </span>
 	                                                    </span>
 	                                                </div>
+	
 	                                            </div>
 	                                        </div>
 	
@@ -68,21 +69,21 @@
 	                                            </div>
 	                                            <h3>详细信息</h3>
 	
-                                           
-                                            	<input name="item.createDate" class="form-control" value='<s:property value="store.dataDetail.createDate"/>' type="hidden">
-                                            	<input name="item.state" class="form-control" value='1' type="hidden">
-                                            	<input name="item.updateDate" class="form-control" value='<s:property value="store.dataDetail.updateDate"/>' type="hidden">
+	                                            
+                                            	<input name="orderDetail.createDate" class="form-control" value='<s:property value="store.dataDetail.createDate"/>' type="hidden">
+                                            	<input name="orderDetail.state" class="form-control" value='1' type="hidden">
+                                            	<input name="orderDetail.updateDate" class="form-control" value='<s:property value="store.dataDetail.updateDate"/>' type="hidden">
                                                 <div class="form-group">
                                                     <label class="col-lg-3 control-label">订单ID:</label>
                                                     <div class="col-lg-8">
                                                         <div class="ui-select">
-                                                             <select name="item.order.id" id="user_time_zone" class="form-control">
+                                                             <select name="orderDetail.order.id" id="user_time_zone" class="form-control">
 	                                                            <s:iterator value="store.subDataList.get('order')">
 	                                                            	<s:if test="id == store.dataDetail.order.id">
 	                                                            		<option value="<s:property value='id'/>" selected="selected"><s:property value='id'/>
 	                                                            	</s:if>
 	                                                            	<s:else>
-	                                                            		<option value="<s:property value='id'/>"><s:property value='id'/>
+	                                                            		<option value="<s:property value='id'/>"><s:property value='name'/>
 	                                                            	</s:else>
 	                                                            </s:iterator>
 	                                                            </select>
@@ -94,7 +95,7 @@
                                                     <label class="col-lg-3 control-label">商品名称:</label>
                                                     <div class="col-lg-8">
                                                         <div class="ui-select">
-                                                             <select name="item.goods.id" id="user_time_zone" class="form-control">
+                                                             <select name="orderDetail.goods.id" id="user_time_zone" class="form-control">
 	                                                            <s:iterator value="store.subDataList.get('goods')">
 	                                                            	<s:if test="id == store.dataDetail.goods.id">
 	                                                            		<option value="<s:property value='id'/>" selected="selected"><s:property value='name'/>
@@ -111,39 +112,18 @@
                                                 <div class="form-group">
                                                     <label class="col-lg-3 control-label">数量:</label>
                                                     <div class="col-lg-8">
-                                                        <input name="item.num" class="form-control" value='<s:property value="store.dataDetail.num"/>' type="text">
+                                                        <input name="orderDetail.num" class="form-control" value='<s:property value="store.dataDetail.num"/>' type="text">
                                                     </div>
                                                 </div>
-                                                
-                                                
-                                                <div class="form-group">
-                                                    <label class="col-lg-3 control-label">销售模式（单位）:</label>
-                                                    <div class="col-lg-8">
-                                                        <div class="ui-select">
-                                                             <select name="item.saleMode.id" id="user_time_zone" class="form-control">
-	                                                            <s:iterator value="store.subDataList.get('saleMode')">
-	                                                            	<s:if test="id == store.dataDetail.saleMode.id">
-	                                                            		<option value="<s:property value='id'/>" selected="selected"><s:property value='name'/>
-	                                                            	</s:if>
-	                                                            	<s:else>
-	                                                            		<option value="<s:property value='id'/>"><s:property value='name'/>
-	                                                            	</s:else>
-	                                                            </s:iterator>
-	                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                
-
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label"></label>
-                                                    <div class="col-md-8">
-                                                        <input class="btn btn-primary" value="保存修改" type="submit">
-                                                        <span></span>
-                                                        <input class="btn btn-default" value="取消修改" type="reset">
-                                                    </div>
-                                                </div>
+	                                                <div class="form-group">
+	                                                    <label class="col-md-3 control-label"></label>
+	                                                    <div class="col-md-8">
+	                                                        <input class="btn btn-primary" value="保存修改" type="submit">
+	                                                        <span></span>
+	                                                        <input class="btn btn-default" value="取消修改" type="reset">
+	                                                    </div>
+	                                                </div>
+	                                            
 	                                        </div>
 	                                        </form>
 	                                    </div>
@@ -153,10 +133,7 @@
 	                        <!-- END OF BLANK PAGE -->
 	
 	                    </div>
-	                    
-	                   
-	              
-	              
+	               
 	                <!-- END OF PROFILE -->
 		        </div>
 			    <!-- CONTENT 网页内容结束--> 
@@ -170,4 +147,4 @@
 		<%@include file="../../common/loadJs.jsp" %>
 	</body>
 </html>
-<s:debug/> <s:fielderror />
+<s:debug/><s:property value="pagein"/>

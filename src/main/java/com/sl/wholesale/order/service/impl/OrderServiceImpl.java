@@ -9,14 +9,24 @@
   
 package com.sl.wholesale.order.service.impl;  
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.sl.global.service.impl.BaseServiceImpl;
+import com.sl.global.util.DateUtil;
+import com.sl.global.util.StringUtil;
 import com.sl.wholesale.entity.hibernate.Goods;
 import com.sl.wholesale.entity.hibernate.Order;
+import com.sl.wholesale.entity.hibernate.OrderDetail;
 import com.sl.wholesale.goods.dao.GoodsDao;
 import com.sl.wholesale.goods.service.GoodsService;
 import com.sl.wholesale.goodstype.service.GoodsTypeService;
 import com.sl.wholesale.order.dao.OrderDao;
 import com.sl.wholesale.order.service.OrderService;
+import com.sl.wholesale.price.service.PriceService;
 import com.sl.wholesale.userinfo.service.UserInfoService;
 
 /** 
@@ -43,29 +53,38 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, OrderDao> implement
 	 * 物资类型的服务类
 	 */
 	private UserInfoService userInfoService;
+	private PriceService priceService;
+	private OrderDao orderDao;
 
 	@Override
-	public int save(Order order) {
-		Long purchaseId = order.getUserInfoByPurchase().getId();
-		Long saleId = order.getUserInfoBySale().getId();
+	public Order save(Order order) {
 		//处理内部bean对象
-		order.setUserInfoByPurchase(userInfoService.queryById(order.getUserInfoByPurchase().getId()));
-		order.setUserInfoBySale(userInfoService.queryById(order.getUserInfoBySale().getId()));
-		super.save(order);
-		return 1;
+		order.setUserInfoByPurchase(userInfoService.queryById(1));
+		order.setUserInfoBySale(userInfoService.queryById(1));
+		return super.save(order);
 	}
 
+	
 	@Override
 	public int update(Order order) {
-		Long purchaseId = order.getUserInfoByPurchase().getId();
-		Long saleId = order.getUserInfoBySale().getId();
 		//处理内部bean对象
-		order.setUserInfoByPurchase(userInfoService.queryById(order.getUserInfoByPurchase().getId()));
-		order.setUserInfoBySale(userInfoService.queryById(order.getUserInfoBySale().getId()));
+		order.setUserInfoByPurchase(userInfoService.queryById(1));
+		order.setUserInfoBySale(userInfoService.queryById(1));
 		super.update(order);
 		return 1;
 	}
 
+	public int update(String contentStr){
+		JSONObject jsonContent = JSON.parseObject(contentStr);
+		String s = jsonContent.get("orderStr").toString();
+		String ss = jsonContent.get("orderDetailStr").toString();
+		Order order = JSON.toJavaObject(JSON.parseObject(s), Order.class); //.parseObject(s, Order.class);
+		List<OrderDetail> orderDetailList = JSON.parseArray(ss, OrderDetail.class);
+		order.setOrderDetails(new HashSet(orderDetailList));
+		super.update(order);
+		return 1;
+	}
+	
 	public UserInfoService getUserInfoService() {
 		return userInfoService;
 	}
@@ -74,6 +93,64 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, OrderDao> implement
 		this.userInfoService = userInfoService;
 	}
 
+	public PriceService getPriceService() {
+		return priceService;
+	}
+
+	public void setPriceService(PriceService priceService) {
+		this.priceService = priceService;
+	}
+
+	@Override
+	public double getPrice(Long goodsId, Long saleModeId) {
+		double price = priceService.getPrice(goodsId, saleModeId);
+		return price;
+	}
+
+	@Override
+	public Order add() {
+		Order order = new Order();
+		String orderCode = getNewOrderCode();
+		order.setOrderCode(orderCode);
+		order.setCreateDate(new Date());
+		order.setUpdateDate(new Date());
+		order.setState(1);
+		order = save(order);
+		return order;
+	}
+
+	private String getNewOrderCode() {
+		String dateString = DateUtil.getDateCodeString();
+		String indexString = getIndexStr();
+		return dateString + indexString;
+	}
+	
+	/**
+	 * 
+	 * getOrderSumToday:获取订单号的序列号部分. <br/> 
+	 * 生成订单号的时候使用.<br/> 
+	 * 
+	 * @author laven 
+	 * @return 
+	 * @since JDK 1.6
+	 */
+	private String getIndexStr() {
+			int sum = orderDao.getOrderSumToday();
+			return StringUtil.fillLeft(String.valueOf(sum+1), '0', 4);
+		}
+	
+	public static void main(String[] args) {
+		String dateString = DateUtil.getDateCodeString();
+		System.out.println(StringUtil.fillLeft("12", '0', 4));
+	}
+
+	public OrderDao getOrderDao() {
+		return orderDao;
+	}
+
+	public void setOrderDao(OrderDao orderDao) {
+		this.orderDao = orderDao;
+	}
 	
 }
   

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-12-30 16:19:22 by Hibernate Tools 4.0.0 -->
+<!-- Generated 2017-1-9 19:54:26 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
     <class name="com.sl.wholesale.entity.hibernate.SaleMode" table="sale_mode" catalog="slsys">
         <id name="id" type="java.lang.Long">
@@ -32,14 +32,23 @@
                 &#195;&#166;&#226;&#128;&#162;&#194;&#176;&#195;&#166;&#194;&#141;&#194;&#174;&#195;&#167;&#197;&#160;&#194;&#182;&#195;&#166;&#226;&#130;&#172;&#194;&#129;&#195;&#175;&#194;&#188;&#203;&#134;&#195;&#166;&#203;&#156;&#194;&#175;&#195;&#165;&#194;&#144;&#194;&#166;&#195;&#166;&#197;&#147;&#226;&#128;&#176;&#195;&#166;&#226;&#128;&#162;&#203;&#134;&#195;&#175;&#194;&#188;&#226;&#128;&#176;</comment>
             </column>
         </property>
-        <set name="items" table="item" inverse="true" lazy="true" fetch="select">
+        <set name="prices" table="price" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="sale_mode_id">
                     <comment>
-                    &#195;&#169;&#194;&#161;&#194;&#185;&#195;&#167;&#226;&#128;&#186;&#194;&#174;&#195;&#164;&#194;&#187;&#194;&#183;&#195;&#166;&#194;&#160;&#194;&#188;</comment>
+                    &#195;&#168;&#194;&#174;&#194;&#161;&#195;&#164;&#194;&#187;&#194;&#183;&#195;&#165;&#194;&#141;&#226;&#128;&#162;&#195;&#164;&#194;&#189;&#194;&#141;</comment>
                 </column>
             </key>
-            <one-to-many class="com.sl.wholesale.entity.hibernate.Item" />
+            <one-to-many class="com.sl.wholesale.entity.hibernate.Price" />
+        </set>
+        <set name="orderDetails" table="order_detail" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sale_mode_id">
+                    <comment>
+                    &#195;&#168;&#194;&#174;&#194;&#161;&#195;&#164;&#194;&#187;&#194;&#183;&#195;&#165;&#194;&#141;&#226;&#128;&#162;&#195;&#164;&#194;&#189;&#194;&#141;</comment>
+                </column>
+            </key>
+            <one-to-many class="com.sl.wholesale.entity.hibernate.OrderDetail" />
         </set>
     </class>
 </hibernate-mapping>

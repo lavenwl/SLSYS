@@ -123,10 +123,15 @@
 	<bean id="goodsService" class="com.sl.wholesale.goods.service.impl.GoodsServiceImpl">
 	</bean>
 	
-	<bean id="itemDao" class="com.sl.wholesale.item.dao.impl.ItemDaoImpl"> 
+	<bean id="orderDetailDao" class="com.sl.wholesale.orderdetail.dao.impl.OrderDetailDaoImpl"> 
 		<property name="sessionFactory" ref="mySessionFactory"></property> 
 	</bean>
-	<bean id="itemService" class="com.sl.wholesale.item.service.impl.ItemServiceImpl">
+	<bean id="orderDetailService" class="com.sl.wholesale.orderdetail.service.impl.OrderDetailServiceImpl">
+	</bean>
+	<bean id="priceDao" class="com.sl.wholesale.price.dao.impl.PriceDaoImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory"></property> 
+	</bean>
+	<bean id="priceService" class="com.sl.wholesale.price.service.impl.PriceServiceImpl">
 	</bean>
 	<bean id="orderDao" class="com.sl.wholesale.order.dao.impl.OrderDaoImpl"> 
 		<property name="sessionFactory" ref="mySessionFactory"></property> 

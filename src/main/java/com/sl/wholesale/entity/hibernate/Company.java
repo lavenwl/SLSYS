@@ -1,6 +1,6 @@
 package com.sl.wholesale.entity.hibernate;
 
-// Generated 2016-12-30 16:19:21 by Hibernate Tools 4.0.0
+// Generated 2017-1-9 19:54:26 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 

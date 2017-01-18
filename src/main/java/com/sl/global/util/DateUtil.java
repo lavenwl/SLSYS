@@ -35,6 +35,9 @@ public class DateUtil {
 	/** 年月 */
 	public static final String DATETIMEFORMATFORMONTH = "yyyy-MM";
 	
+	/** 根据当前日期生成的单号字符串 */
+	public static final String DATATIMEFORCODE = "yyMMdd";
+	
 	/**
 	 * 计算两个日期的间隔天数
 	 * 
@@ -321,6 +324,8 @@ public class DateUtil {
 		}
 		return dateString;
 	}
+	
+
 
 	/**
 	 * 日期格式转换 DATE to DATE
@@ -779,5 +784,68 @@ public class DateUtil {
 			flag =true;
 		}
 		return flag;
+	}
+	
+	/**
+	 * 日期格式化(Date转换为String)
+	 * 
+	 * @param _date
+	 *            日期
+	 * @param patternString
+	 *            处理结果日期的显示格式，如："YYYY-MM-DD"
+	 * @return String
+	 */
+	public static String getDateCodeString() {
+		String dateString = "";
+			SimpleDateFormat formatter = new SimpleDateFormat(DATATIMEFORCODE);
+			dateString = formatter.format(new Date());
+		return dateString;
+	}
+	
+	/**
+	 * 
+	 * getStartOfDayDate:获取当天开始时间. <br/> 
+	 * 开始时间:yyyy-MM-DD 00:00:00.<br/> 
+	 * 
+	 * @author laven 
+	 * @return 
+	 * @since JDK 1.6
+	 */
+	public static Date getStartOfToDayDate() {
+		Calendar cal = Calendar.getInstance();  
+		Date date = new Date();  
+		cal.setTime(date);  
+		cal.set(Calendar.HOUR_OF_DAY, 0);  
+		cal.set(Calendar.MINUTE, 0);  
+		cal.set(Calendar.SECOND, 0);  
+		cal.set(Calendar.MILLISECOND, 0);  
+		Date start = cal.getTime(); 
+		return start;
+	}
+	
+	/**
+	 * 
+	 * getStartOfDayDate:获取明天开始时间. <br/> 
+	 * 开始时间:yyyy-MM-DD 00:00:00.<br/> 
+	 * 
+	 * @author laven 
+	 * @return 
+	 * @since JDK 1.6
+	 */
+	public static Date getStartOfTomorrowDate() {
+		Calendar cal = Calendar.getInstance();  
+		Date date = new Date();  
+		cal.setTime(date);  
+		cal.set(Calendar.HOUR_OF_DAY, 0);  
+		cal.set(Calendar.MINUTE, 0);  
+		cal.set(Calendar.SECOND, 0);  
+		cal.set(Calendar.MILLISECOND, 0);  
+		cal.add(Calendar.DATE, 1);  
+		Date end = cal.getTime(); 
+		return end;
+	}
+	public static void main(String[] args) {
+		String s = "170200010001";
+		System.out.println(s.substring(8, 12));
 	}
 }

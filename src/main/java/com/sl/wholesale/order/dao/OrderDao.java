@@ -25,5 +25,7 @@ import com.sl.wholesale.entity.hibernate.Order;
  */
 public interface OrderDao extends BaseDao<Order, Long> {
 
+	int getOrderSumToday();
+
 }
   

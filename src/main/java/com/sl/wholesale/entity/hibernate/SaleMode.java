@@ -1,6 +1,6 @@
 package com.sl.wholesale.entity.hibernate;
 
-// Generated 2016-12-30 16:19:21 by Hibernate Tools 4.0.0
+// Generated 2017-1-9 19:54:26 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,7 +18,8 @@ public class SaleMode extends BaseEntity implements java.io.Serializable {
 	private Date createDate;
 	private Date updateDate;
 	private Integer state;
-	private Set items = new HashSet(0);
+	private Set prices = new HashSet(0);
+	private Set orderDetails = new HashSet(0);
 
 	public SaleMode() {
 	}
@@ -29,12 +30,13 @@ public class SaleMode extends BaseEntity implements java.io.Serializable {
 	}
 
 	public SaleMode(String name, Date createDate, Date updateDate,
-			Integer state, Set items) {
+			Integer state, Set prices, Set orderDetails) {
 		this.name = name;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 		this.state = state;
-		this.items = items;
+		this.prices = prices;
+		this.orderDetails = orderDetails;
 	}
 
 	public Long getId() {
@@ -77,12 +79,20 @@ public class SaleMode extends BaseEntity implements java.io.Serializable {
 		this.state = state;
 	}
 
-	public Set getItems() {
-		return this.items;
+	public Set getPrices() {
+		return this.prices;
 	}
 
-	public void setItems(Set items) {
-		this.items = items;
+	public void setPrices(Set prices) {
+		this.prices = prices;
+	}
+
+	public Set getOrderDetails() {
+		return this.orderDetails;
+	}
+
+	public void setOrderDetails(Set orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 
 }

@@ -29,7 +29,7 @@
 			                    <div class="col-sm-12">
 			                        <div class="nest" id="FootableClose">
 			                            <div class="title-alt">
-			                                <h6>用户列表</h6>
+			                                <h6>订单列表</h6>
 			                                <div class="titleClose">
 			                                    <a class="gone" href="#FootableClose">
 			                                        <span class="entypo-cancel"></span>
@@ -66,11 +66,11 @@
 			                                                <td><s:property value="id"/></td>
 			                                                <td>
 																<s:set var="userInfoByPurchaseId" value="userInfoByPurchase.id"></s:set>
-				                                                <s:property value="store.subDataMap.get('userInfoByPurchase').get(#userInfoByPurchaseId).name"/>
+				                                                <s:property value="store.subDataMap.get('userInfoByPurchase').get(#userInfoByPurchaseId).user.username"/>
 			                                                </td>
 			                                                <td>
 																<s:set var="userInfoBySaleId" value="userInfoBySale.id"></s:set>
-				                                                <s:property value="store.subDataMap.get('userInfoBySale').get(#userInfoBySaleId).name"/>
+				                                                <s:property value="store.subDataMap.get('userInfoBySale').get(#userInfoBySaleId).user.username"/>
 			                                                </td>
 			                                                <td><s:property value="sumMoney"/></td>
 			                                                <td><s:property value="money"/></td>

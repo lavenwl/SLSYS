@@ -1,6 +1,6 @@
 package com.sl.wholesale.entity.hibernate;
 
-// Generated 2016-12-30 16:19:21 by Hibernate Tools 4.0.0
+// Generated 2017-1-9 19:54:26 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -16,12 +16,13 @@ public class Order extends BaseEntity implements java.io.Serializable {
 	private Long id;
 	private UserInfo userInfoByPurchase;
 	private UserInfo userInfoBySale;
+	private String orderCode;
 	private double sumMoney;
 	private double money;
 	private Date createDate;
 	private Date updateDate;
 	private Integer state;
-	private Set items = new HashSet(0);
+	private Set orderDetails = new HashSet(0);
 
 	public Order() {
 	}
@@ -32,16 +33,17 @@ public class Order extends BaseEntity implements java.io.Serializable {
 	}
 
 	public Order(UserInfo userInfoByPurchase, UserInfo userInfoBySale,
-			double sumMoney, double money, Date createDate, Date updateDate,
-			Integer state, Set items) {
+			String orderCode, double sumMoney, double money, Date createDate,
+			Date updateDate, Integer state, Set orderDetails) {
 		this.userInfoByPurchase = userInfoByPurchase;
 		this.userInfoBySale = userInfoBySale;
+		this.orderCode = orderCode;
 		this.sumMoney = sumMoney;
 		this.money = money;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 		this.state = state;
-		this.items = items;
+		this.orderDetails = orderDetails;
 	}
 
 	public Long getId() {
@@ -66,6 +68,14 @@ public class Order extends BaseEntity implements java.io.Serializable {
 
 	public void setUserInfoBySale(UserInfo userInfoBySale) {
 		this.userInfoBySale = userInfoBySale;
+	}
+
+	public String getOrderCode() {
+		return this.orderCode;
+	}
+
+	public void setOrderCode(String orderCode) {
+		this.orderCode = orderCode;
 	}
 
 	public double getSumMoney() {
@@ -108,12 +118,12 @@ public class Order extends BaseEntity implements java.io.Serializable {
 		this.state = state;
 	}
 
-	public Set getItems() {
-		return this.items;
+	public Set getOrderDetails() {
+		return this.orderDetails;
 	}
 
-	public void setItems(Set items) {
-		this.items = items;
+	public void setOrderDetails(Set orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 
 }

@@ -754,107 +754,107 @@ public class StringUtil extends StringUtils {
 	 * @return Class
 	 */
 	@SuppressWarnings("unchecked")
-//	public static Class[] getClass(String str,String value,List<Object> valueList){
-//		if(isNotBlank(str)){
-//			String[] s=str.split(",");
-//			if(null!=s){
-//				List<Class> list = new ArrayList<Class>();
-//				String[] valueS=null;
-//				if(isNotBlank(value)){
-//					valueS=value.split(";");
-//				}
-//				Class[] c=new Class[s.length];
-//				for (int i = 0; i < s.length; i++) {
-//					String str1 = s[i];
-//					String v=null;
-//					if(null!=valueS&&valueS.length>i){
-//						v=valueS[i];
-//					}
-//					if(StringUtil.isNotBlank(str1)){
-//						if(str1.equals("String")){
-//							c[i]=String.class;
-//							list.add(String.class);
-//							if(null!=v){
-//								valueList.add(v);
-//							}
-//						}else if(str1.equals("int")){
-//							c[i]=int.class;
-//							list.add(int.class);
-//							if(null!=v){
-//								valueList.add(Long.valueOf(v).intValue());
-//							}
-//						}else if(str1.equals("Long")){
-//							c[i]=Long.class;
-//							list.add(Long.class);
-//							if(null!=v){
-//								valueList.add(Long.valueOf(v));
-//							}
-//						}else if(str1.equals("Double")){
-//							c[i]=Double.class;
-//							list.add(Double.class);
-//							if(null!=v){
-//								valueList.add(Double.valueOf(v));
-//							}
-//						}else if(str1.equals("double")){
-//							c[i]=double.class;
-//							list.add(double.class);
-//							if(null!=v){
-//								valueList.add(Double.valueOf(v));
-//							}
-//						}else if(str1.equals("Date")){
-//							c[i]=Date.class;
-//							list.add(Date.class);
-//							if(null!=v){
-//								valueList.add(DateUtil.getDateToString(v, DateUtil.DATESHOWFORMAT));
-//							}
-//						}else if(str1.equals("Integer")){
-//							c[i]=Integer.class;
-//							list.add(Integer.class);
-//							if(null!=v){
-//								valueList.add(Integer.valueOf(v));
-//							}
-//						}else if(str1.equals("boolean")||str1.equals("Boolean")){
-//							c[i]=boolean.class;
-//							list.add(boolean.class);
-//							if(null!=v){
-//								if("true".equals(v)){
-//									valueList.add(true);
-//								}else{
-//									valueList.add(false);
-//								}
-//							}
-//						}else if(str1.equals("Object")){
-//							c[i]=Object.class;
-//							list.add(Object.class);
-//							if(null!=v){
-//								valueList.add(v);
-//							}
-//						}else{//javabean对象
-//							Class clazz=null;
-//							try {
-//								clazz = Class.forName(str1);
-//								c[i]=clazz;
-//								list.add(clazz);
-//								if(null!=v){//是json格式的
-//									Object o=clazz.newInstance();
-//									Map<String,String> map=JsonUtil.getJsonToMap(v);
-//									if(null!=map&&!map.isEmpty()){
-//										for (String key : map.keySet()) {
-//											BeanUtil.forceSetProperty(o, key, map.get(key));
-//										}
-//									}
-//									valueList.add(o);
-//								}
-//							} catch (Exception e) {
-//							}
-//						}
-//					}
-//				}
-//				return c;
-//			}
-//		}
-//		return null;
-//	}
+	public static Class[] getClass(String str,String value,List<Object> valueList){
+		if(isNotBlank(str)){
+			String[] s=str.split(",");
+			if(null!=s){
+				List<Class> list = new ArrayList<Class>();
+				String[] valueS=null;
+				if(isNotBlank(value)){
+					valueS=value.split(";");
+				}
+				Class[] c=new Class[s.length];
+				for (int i = 0; i < s.length; i++) {
+					String str1 = s[i];
+					String v=null;
+					if(null!=valueS&&valueS.length>i){
+						v=valueS[i];
+					}
+					if(StringUtil.isNotBlank(str1)){
+						if(str1.equals("String")){
+							c[i]=String.class;
+							list.add(String.class);
+							if(null!=v){
+								valueList.add(v);
+							}
+						}else if(str1.equals("int")){
+							c[i]=int.class;
+							list.add(int.class);
+							if(null!=v){
+								valueList.add(Long.valueOf(v).intValue());
+							}
+						}else if(str1.equals("Long")){
+							c[i]=Long.class;
+							list.add(Long.class);
+							if(null!=v){
+								valueList.add(Long.valueOf(v));
+							}
+						}else if(str1.equals("Double")){
+							c[i]=Double.class;
+							list.add(Double.class);
+							if(null!=v){
+								valueList.add(Double.valueOf(v));
+							}
+						}else if(str1.equals("double")){
+							c[i]=double.class;
+							list.add(double.class);
+							if(null!=v){
+								valueList.add(Double.valueOf(v));
+							}
+						}else if(str1.equals("Date")){
+							c[i]=Date.class;
+							list.add(Date.class);
+							if(null!=v){
+								valueList.add(DateUtil.getDateToString(v, DateUtil.DATESHOWFORMAT));
+							}
+						}else if(str1.equals("Integer")){
+							c[i]=Integer.class;
+							list.add(Integer.class);
+							if(null!=v){
+								valueList.add(Integer.valueOf(v));
+							}
+						}else if(str1.equals("boolean")||str1.equals("Boolean")){
+							c[i]=boolean.class;
+							list.add(boolean.class);
+							if(null!=v){
+								if("true".equals(v)){
+									valueList.add(true);
+								}else{
+									valueList.add(false);
+								}
+							}
+						}else if(str1.equals("Object")){
+							c[i]=Object.class;
+							list.add(Object.class);
+							if(null!=v){
+								valueList.add(v);
+							}
+						}else{//javabean对象
+							Class clazz=null;
+							try {
+								clazz = Class.forName(str1);
+								c[i]=clazz;
+								list.add(clazz);
+								if(null!=v){//是json格式的
+									Object o=clazz.newInstance();
+									Map<String,String> map=null;//JsonUtil.getJsonToMap(v);
+									if(null!=map&&!map.isEmpty()){
+										for (String key : map.keySet()) {
+											BeanUtil.forceSetProperty(o, key, map.get(key));
+										}
+									}
+									valueList.add(o);
+								}
+							} catch (Exception e) {
+							}
+						}
+					}
+				}
+				return c;
+			}
+		}
+		return null;
+	}
 	
 	public static String lowerFirstChar(String string){
 		char[] chars = new char[1];

@@ -41,12 +41,11 @@ public class GoodsServiceImpl extends BaseServiceImpl<Goods, GoodsDao> implement
 	private GoodsTypeService goodsTypeService;
 	
 	@Override
-	public int save(Goods goods) {
+	public Goods save(Goods goods) {
 		Long id = goods.getGoodsType().getId();
 		//处理内部bean对象
 		goods.setGoodsType(goodsTypeService.queryById(goods.getGoodsType().getId()));
-		super.save(goods);
-		return 1;
+		return super.save(goods);
 	}
 
 	@Override

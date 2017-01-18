@@ -47,14 +47,13 @@ public class UserInfoServiceImpl extends BaseServiceImpl<UserInfo, UserInfoDao> 
 	private CompanyService companyService;
 	
 	@Override
-	public int save(UserInfo userInfo) {
+	public UserInfo save(UserInfo userInfo) {
 		Long userId = userInfo.getUser().getId();
 		Long companyId = userInfo.getCompany().getId();
 		//处理内部bean对象
 		userInfo.setUser(userService.queryById(userInfo.getUser().getId()));
 		userInfo.setCompany(companyService.queryById(companyId));
-		super.save(userInfo);
-		return 1;
+		return super.save(userInfo);
 	}
 
 	@Override

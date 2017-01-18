@@ -78,7 +78,7 @@ public interface BaseService<E, D> {
 	 * @return 
 	 * @since JDK 1.6
 	 */
-	public int save(E entity);
+	public E save(E entity);
 
 	/**
 	 * 
@@ -90,6 +90,8 @@ public interface BaseService<E, D> {
 	 * @since JDK 1.6
 	 */
 	public int update(E entity);
+
+	public int update(String contentStr);
 
 }
   

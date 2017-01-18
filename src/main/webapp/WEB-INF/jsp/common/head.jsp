@@ -7,7 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="laven">
+    <!-- 解决提交表单时候空格转换为+的问题 -->
+    <meta name="Content-Type" content="application/x-www-form-urlencoded">
+    
     <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="assets/js/slsys/slsys.js"></script>
+    <script type="text/javascript" src="assets/js/json2.js"></script>
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/loader-style.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -24,7 +30,6 @@
     <link rel="stylesheet" href="assets/js/dataTable/css/datatables.responsive.css">
 
 	<!-- 404页面格式文件 -->
-	
     <link rel="stylesheet" href="assets/css/signin.css">
     <link rel="stylesheet" href="assets/css/extra-pages.css">
 

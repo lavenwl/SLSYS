@@ -433,7 +433,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
     border: 1px solid !important;
     border-radius: 4px;
     box-shadow: none !important;
-    color: #C7D5E0 !important;
+    color: #3b4044 !important;
     font-size: 13px !important;
     height: 31px !important;
 }
@@ -1876,7 +1876,7 @@ img.sidebar-icon {
     border-bottom: 1px dotted #DDDDDD;
 }
 .nest .title-alt h6 {
-    color: #9EA7B3;
+    color: #1c1f23;
     float: left;
     font-family:'Open Sans', serif;
     font-size: 14px;

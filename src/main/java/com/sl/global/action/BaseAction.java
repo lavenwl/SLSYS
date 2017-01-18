@@ -12,14 +12,17 @@ package com.sl.global.action;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts2.interceptor.CookiesAware;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.util.ServletContextAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.sl.global.entity.BaseEntity;
 import com.sl.global.entity.Store;
@@ -56,6 +59,13 @@ public class BaseAction<E extends BaseEntity,S extends BaseService> extends Acti
 	public Class<E> baseEntityClass;
 	public Class<S> baseServiceClass;
 	public S baseService;
+	
+	public  String contentStr;
+	
+
+	public void setContentStr(String contentStr) {
+		this.contentStr = contentStr;
+	}
 	
 	public BaseAction(Class<E> baseEntityClass,Class<S> baseServiceClass) throws ClassNotFoundException{
 			this.baseEntityClass = baseEntityClass;
@@ -150,6 +160,13 @@ public class BaseAction<E extends BaseEntity,S extends BaseService> extends Acti
 	public String update(E baseEntity){
 		if(null != baseEntity){
 			getBaseService().update(baseEntity);
+		}
+		return "update";
+	}
+	
+	public String update(String contentStr){
+		if(contentStr != null){
+			getBaseService().update(contentStr);
 		}
 		return "update";
 	}

@@ -27,5 +27,9 @@ import com.sl.wholesale.order.dao.OrderDao;
  */
 public interface OrderService extends BaseService<Order, OrderDao> {
 
+	double getPrice(Long goodsId, Long saleModeId);
+
+	Order add();
+
 }
   

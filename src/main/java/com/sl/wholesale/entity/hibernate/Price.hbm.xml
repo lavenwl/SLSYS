@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-12-30 16:19:22 by Hibernate Tools 4.0.0 -->
+<!-- Generated 2017-1-9 19:54:26 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="com.sl.wholesale.entity.hibernate.Item" table="item" catalog="slsys">
+    <class name="com.sl.wholesale.entity.hibernate.Price" table="price" catalog="slsys">
         <id name="id" type="java.lang.Long">
             <column name="id" />
             <generator class="identity" />
@@ -13,21 +13,28 @@
                 <comment>&#195;&#167;&#226;&#128;&#176;&#194;&#169;&#195;&#168;&#194;&#181;&#226;&#128;&#158;ID</comment>
             </column>
         </many-to-one>
-        <many-to-one name="order" class="com.sl.wholesale.entity.hibernate.Order" fetch="select">
-            <column name="order_id">
-                <comment>&#195;&#168;&#194;&#174;&#194;&#162;&#195;&#165;&#194;&#141;&#226;&#128;&#162;ID</comment>
-            </column>
-        </many-to-one>
         <many-to-one name="saleMode" class="com.sl.wholesale.entity.hibernate.SaleMode" fetch="select">
             <column name="sale_mode_id">
                 <comment>
-                &#195;&#169;&#194;&#161;&#194;&#185;&#195;&#167;&#226;&#128;&#186;&#194;&#174;&#195;&#164;&#194;&#187;&#194;&#183;&#195;&#166;&#194;&#160;&#194;&#188;</comment>
+                &#195;&#168;&#194;&#174;&#194;&#161;&#195;&#164;&#194;&#187;&#194;&#183;&#195;&#165;&#194;&#141;&#226;&#128;&#162;&#195;&#164;&#194;&#189;&#194;&#141;</comment>
             </column>
         </many-to-one>
-        <property name="num" type="java.lang.Integer">
-            <column name="num">
+        <property name="price" type="double">
+            <column name="price" precision="11" scale="4">
                 <comment>
-                &#195;&#169;&#194;&#161;&#194;&#185;&#195;&#167;&#226;&#128;&#186;&#194;&#174;&#195;&#166;&#226;&#128;&#162;&#194;&#176;&#195;&#169;&#226;&#128;&#161;&#194;&#143;</comment>
+                &#195;&#165;&#194;&#141;&#226;&#128;&#162;&#195;&#164;&#194;&#187;&#194;&#183;&#195;&#164;&#194;&#187;&#194;&#183;&#195;&#166;&#194;&#160;&#194;&#188;&#195;&#175;&#194;&#188;&#203;&#134;&#195;&#166;&#226;&#128;&#147;&#194;&#164;&#195;&#175;&#194;&#188;&#226;&#128;&#176;</comment>
+            </column>
+        </property>
+        <property name="weight" type="double">
+            <column name="weight" precision="11" scale="4">
+                <comment>
+                &#195;&#165;&#194;&#141;&#226;&#128;&#162;&#195;&#164;&#194;&#189;&#194;&#141;&#195;&#169;&#226;&#128;&#161;&#194;&#141;&#195;&#169;&#226;&#128;&#161;&#194;&#143;&#195;&#175;&#194;&#188;&#203;&#134;&#195;&#166;&#226;&#128;&#147;&#194;&#164;&#195;&#175;&#194;&#188;&#226;&#128;&#176;</comment>
+            </column>
+        </property>
+        <property name="money" type="double">
+            <column name="money" precision="11" scale="4">
+                <comment>
+                &#195;&#167;&#194;&#187;&#226;&#128;&#158;&#195;&#165;&#194;&#144;&#203;&#134;&#195;&#165;&#194;&#141;&#226;&#128;&#162;&#195;&#164;&#194;&#187;&#194;&#183;</comment>
             </column>
         </property>
         <property name="createDate" type="timestamp">

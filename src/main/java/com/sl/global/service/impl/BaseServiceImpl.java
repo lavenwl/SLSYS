@@ -10,12 +10,14 @@
 package com.sl.global.service.impl;  
 
 import java.util.List;
+
 import com.sl.global.dao.BaseDao;
 import com.sl.global.entity.BaseEntity;
 import com.sl.global.entity.QueryBean;
 import com.sl.global.service.BaseService;
 import com.sl.global.util.SpringContextUtil;
 import com.sl.global.util.StringUtil;
+import com.sl.wholesale.entity.hibernate.Order;
 
 /** 
  * ClassName:BaseServiceImpl <br/> 
@@ -61,9 +63,8 @@ public class BaseServiceImpl<E extends BaseEntity, D extends BaseDao<E, Long>> i
 	}
 
 	@Override
-	public int save(E entity) {
-		getBaseDao().save(entity);
-		return 1;
+	public E save(E entity) {
+		return getBaseDao().save(entity);
 	}
 
 	@Override
@@ -72,6 +73,9 @@ public class BaseServiceImpl<E extends BaseEntity, D extends BaseDao<E, Long>> i
 		return 1;
 	}
 
+	public int update(String contentStr){
+		return 1;
+	}
 
 	public D getBaseDao(){
 		if(baseDao == null){
