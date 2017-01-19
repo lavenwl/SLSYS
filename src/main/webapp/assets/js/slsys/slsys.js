@@ -1,5 +1,6 @@
 //菜单请求
 function menuRequest(url){
+	$("#mainContent").empty();
 	$.post(url,
 		function(data,status){
 			if(status=="success"){

@@ -36,6 +36,9 @@ public class LoginAction extends BaseAction<User,LoginService>{
 	public LoginAction() throws ClassNotFoundException{
 		super(User.class, LoginService.class);
 	}
-	
+	public String login(){
+		
+		return "success";
+	}
 }
   

@@ -36,7 +36,7 @@
                         </li>
 						<s:iterator value="subMenu">
                         <li>
-                            <a class="tooltip-tip ajax-load" href="<s:property value='action'/>" title="Blog App">
+                            <a class="tooltip-tip ajax-load" href="javascript:menuRequest('<s:property value="action"/>');" title="Blog App">
                                 <i class="icon-document-edit"></i>
                                 <span><s:property value="name"/></span>
                             </a>

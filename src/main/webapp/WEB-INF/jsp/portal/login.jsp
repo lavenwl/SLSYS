@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
                     <div class="account-box"> 
-                        <form role="form" action="login.action">
+                        <form role="form" action="login!login.action">
                             <div class="form-group">
                                 <!--a href="#" class="pull-right label-forgot">Forgot email?</a-->
                                 <label for="inputUsernameEmail">用户名</label>

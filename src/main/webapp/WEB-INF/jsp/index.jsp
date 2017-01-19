@@ -14,12 +14,10 @@
  		<!--  PAPER WRAP -->
 	    <div class="wrap-fluid">
 	        <div class="container-fluid paper-wrap bevel tlbr" style="padding-top:0px;">
-				<%@include file="common/funcTree.jsp" %> 
-				
 	            <!-- CONTENT 网页内容开始--> 
-	            <%-- <%@include file="base/user/userList.jsp" %>  --%>
-	            <div id="mainContent"></div>
-	            <h1>这里是首页需要放置的内容</h1>
+	            <div id="mainContent">
+	            	<h1>这里是首页需要放置的内容</h1>
+	            </div>
 	            <!-- CONTENT 网页内容结束--> 
 	            
 	          	<%@include file="common/foot.jsp" %> 
