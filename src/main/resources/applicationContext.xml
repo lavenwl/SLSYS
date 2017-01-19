@@ -45,8 +45,8 @@
 		<property name="dataSource" ref="hikariDataSource"></property> 
 		<property name="mappingDirectoryLocations">
 			<list>
-				<value>classpath*:com/sl/portal/entity/hibernate/</value>
-				<value>classpath*:com/sl/wholesale/entity/hibernate/</value>
+				<value>classpath*:com/sl/portal/hibernate/</value>
+				<value>classpath*:com/sl/wholesale/hibernate/</value>
 		    </list>
 		</property>
 		<property name="hibernateProperties">
@@ -95,7 +95,8 @@
 			<aop:after method="myafter" pointcut-ref="servicepointcut" />
 		</aop:aspect>
 	</aop:config> -->
-	
+	<bean id="loginService" class="com.sl.portal.login.service.impl.LoginServiceImpl">
+	</bean>
 	
 	<bean id="userDao" class="com.sl.portal.user.dao.impl.UserDaoImpl"> 
 		<property name="sessionFactory" ref="mySessionFactory"></property> 

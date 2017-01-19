@@ -1,3 +1,15 @@
+//菜单请求
+function menuRequest(url){
+	$.post(url,
+		function(data,status){
+			if(status=="success"){
+				$("#mainContent").append(data); 
+			}else{
+				alert("返回错误");
+			}
+		});
+}
+
 //订单制作是添加一行明细
 function addOrderDetail(event){
 	var $tbody = $(event).parents('table').children('tbody');

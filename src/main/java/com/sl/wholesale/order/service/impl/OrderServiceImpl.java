@@ -58,18 +58,12 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, OrderDao> implement
 
 	@Override
 	public Order save(Order order) {
-		//处理内部bean对象
-		order.setUserInfoByPurchase(userInfoService.queryById(1));
-		order.setUserInfoBySale(userInfoService.queryById(1));
 		return super.save(order);
 	}
 
 	
 	@Override
 	public int update(Order order) {
-		//处理内部bean对象
-		order.setUserInfoByPurchase(userInfoService.queryById(1));
-		order.setUserInfoBySale(userInfoService.queryById(1));
 		super.update(order);
 		return 1;
 	}

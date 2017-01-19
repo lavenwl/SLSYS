@@ -18,6 +18,7 @@
 				
 	            <!-- CONTENT 网页内容开始--> 
 	            <%-- <%@include file="base/user/userList.jsp" %>  --%>
+	            <div id="mainContent"></div>
 	            <h1>这里是首页需要放置的内容</h1>
 	            <!-- CONTENT 网页内容结束--> 
 	            

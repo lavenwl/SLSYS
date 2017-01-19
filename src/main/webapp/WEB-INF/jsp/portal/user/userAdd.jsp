@@ -25,7 +25,7 @@
 	                            <!-- BLANK PAGE-->
 	                            <div style="margin:-20px 15px;" class="nest" id="Blank_PageClose">
 	                                <div class="title-alt">
-	                                    <h6>新增商户</h6>
+	                                    <h6>新增用户</h6>
 	                                    <div class="titleClose">
 	                                        <a class="gone" href="#Blank_PageClose">
 	                                            <span class="entypo-cancel"></span>
@@ -51,7 +51,7 @@
 	                                                    <span class="input-group-btn">
 	                                                        <span class="btn btn-primary btn-file">
 	                                                            选择<input id="uploadFacade" name="uploadFile" type="file" accept=".png,.jpg,.gif">
-	                                                            <input id="uploadUrl" name="orderDetail.url" type="hidden"/>
+	                                                            <input id="uploadUrl" name="user.url" type="hidden"/>
 	                                                        </span>
 	                                                    </span>
 	                                                </div>
@@ -69,34 +69,46 @@
 	                                            <h3>详细信息</h3>
 	
                                            
-                                            	<input name="orderDetail.createDate" class="form-control" value='<s:property value="store.dataDetail.createDate"/>' type="hidden">
-                                            	<input name="orderDetail.state" class="form-control" value='1' type="hidden">
-                                            	<input name="orderDetail.updateDate" class="form-control" value='<s:property value="store.dataDetail.updateDate"/>' type="hidden">
+                                            	<input name="user.createDate" class="form-control" value='<s:property value="store.dataDetail.createDate"/>' type="hidden">
+                                            	<input name="user.state" class="form-control" value='1' type="hidden">
+                                            	<input name="user.updateDate" class="form-control" value='<s:property value="store.dataDetail.updateDate"/>' type="hidden">
                                                 <div class="form-group">
-                                                    <label class="col-lg-3 control-label">订单编号:</label>
-                                                    <div class="col-lg-8">
-                                                        <div class="ui-select">
-                                                             <select name="orderDetail.order.id" id="user_time_zone" class="form-control">
-	                                                            <s:iterator value="store.subDataList.get('order')">
-	                                                            	<s:if test="id == store.dataDetail.order.id">
-	                                                            		<option value="<s:property value='id'/>" selected="selected"><s:property value='id'/>
-	                                                            	</s:if>
-	                                                            	<s:else>
-	                                                            		<option value="<s:property value='id'/>"><s:property value='id'/>
-	                                                            	</s:else>
-	                                                            </s:iterator>
-	                                                            </select>
-                                                        </div>
+                                                    <label class="col-md-3 control-label">用户名:</label>
+                                                    <div class="col-md-8">
+                                                        <input name="user.username" class="form-control" value='<s:property value="store.dataDetail.username"/>' type="text">
                                                     </div>
                                                 </div>
-                                                
                                                 <div class="form-group">
-                                                    <label class="col-lg-3 control-label">商品名称:</label>
+                                                    <label class="col-md-3 control-label">密码:</label>
+                                                    <div class="col-md-8">
+                                                        <input name="user.password"class="form-control" value='<s:property value="store.dataDetail.password"/>' type="password">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">确认密码:</label>
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" value="123345" type="password">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">电话:</label>
+                                                    <div class="col-lg-8">
+                                                        <input name="user.phone" class="form-control" value='<s:property value="store.dataDetail.id"/>' type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">商家:</label>
+                                                    <div class="col-lg-8">
+                                                        <input class="form-control" value="" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-3 control-label">角色:</label>
                                                     <div class="col-lg-8">
                                                         <div class="ui-select">
-                                                             <select name="orderDetail.goods.id" id="user_time_zone" class="form-control">
-	                                                            <s:iterator value="store.subDataList.get('goods')">
-	                                                            	<s:if test="id == store.dataDetail.goods.id">
+                                                             <select name="user.role.id" id="user_time_zone" class="form-control">
+	                                                            <s:iterator value="store.subDataList.get('role')">
+	                                                            	<s:if test="id == store.dataDetail.role.id">
 	                                                            		<option value="<s:property value='id'/>" selected="selected"><s:property value='name'/>
 	                                                            	</s:if>
 	                                                            	<s:else>
@@ -108,34 +120,6 @@
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="form-group">
-                                                    <label class="col-lg-3 control-label">数量:</label>
-                                                    <div class="col-lg-8">
-                                                        <input name="orderDetail.num" class="form-control" value='<s:property value="store.dataDetail.num"/>' type="text">
-                                                    </div>
-                                                </div>
-                                                
-                                                
-                                                <div class="form-group">
-                                                    <label class="col-lg-3 control-label">销售模式（单位）:</label>
-                                                    <div class="col-lg-8">
-                                                        <div class="ui-select">
-                                                             <select name="orderDetail.saleMode.id" id="user_time_zone" class="form-control">
-	                                                            <s:iterator value="store.subDataList.get('saleMode')">
-	                                                            	<s:if test="id == store.dataDetail.saleMode.id">
-	                                                            		<option value="<s:property value='id'/>" selected="selected"><s:property value='name'/>
-	                                                            	</s:if>
-	                                                            	<s:else>
-	                                                            		<option value="<s:property value='id'/>"><s:property value='name'/>
-	                                                            	</s:else>
-	                                                            </s:iterator>
-	                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                
-
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label"></label>
                                                     <div class="col-md-8">

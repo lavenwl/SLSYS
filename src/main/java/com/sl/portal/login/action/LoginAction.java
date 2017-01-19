@@ -12,6 +12,9 @@ package com.sl.portal.login.action;
 import com.sl.global.action.BaseAction;
 import com.sl.global.entity.BaseEntity;
 import com.sl.global.service.BaseService;
+import com.sl.portal.entity.hibernate.User;
+import com.sl.portal.login.service.LoginService;
+import com.sl.wholesale.entity.hibernate.UserInfo;
 
 /** 
  * ClassName:LoginAction <br/> 
@@ -22,7 +25,7 @@ import com.sl.global.service.BaseService;
  * @since    JDK 1.6 
  * @see       
  */
-public class LoginAction extends BaseAction<BaseEntity,BaseService>{
+public class LoginAction extends BaseAction<User,LoginService>{
 	
 	/** 
 	 * serialVersionUID:TODO(用一句话描述这个变量表示什么). 
@@ -31,7 +34,7 @@ public class LoginAction extends BaseAction<BaseEntity,BaseService>{
 	private static final long serialVersionUID = -7572466147970157505L;
 
 	public LoginAction() throws ClassNotFoundException{
-		super(BaseEntity.class, BaseService.class);
+		super(User.class, LoginService.class);
 	}
 	
 }

@@ -40,23 +40,23 @@
 		</action>
 		<action name="user" class="com.sl.portal.user.action.UserAction">
 			<result name="success">/WEB-INF/jsp/success.jsp</result>
-			<result name="list">/WEB-INF/jsp/base/user/userList.jsp</result>
-			<result name="detail">/WEB-INF/jsp/base/user/userDetail.jsp</result>
-			<result name="edit">/WEB-INF/jsp/base/user/userEdit.jsp</result>
+			<result name="list">/WEB-INF/jsp/portal/user/userList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/portal/user/userDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/portal/user/userEdit.jsp</result>
 			<result name="save" type="redirectAction">user!list</result>
 			<result name="delete" type="redirectAction">user!list</result>
 			<result name="update" type="redirectAction">user!list</result>
-			<result name="add">/WEB-INF/jsp/base/user/userAdd.jsp</result>
+			<result name="add">/WEB-INF/jsp/portal/user/userAdd.jsp</result>
 		</action>
 		<action name="role" class="com.sl.portal.role.action.RoleAction">
 			<result name="success">/WEB-INF/jsp/success.jsp</result>
-			<result name="list">/WEB-INF/jsp/base/role/roleList.jsp</result>
-			<result name="detail">/WEB-INF/jsp/base/role/roleDetail.jsp</result>
-			<result name="edit">/WEB-INF/jsp/base/role/roleEdit.jsp</result>
+			<result name="list">/WEB-INF/jsp/portal/role/roleList.jsp</result>
+			<result name="detail">/WEB-INF/jsp/portal/role/roleDetail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/portal/role/roleEdit.jsp</result>
 			<result name="save" type="redirectAction">role!list</result>
 			<result name="delete" type="redirectAction">role!list</result>
 			<result name="update" type="redirectAction">role!list</result>
-			<result name="add">/WEB-INF/jsp/base/role/roleAdd.jsp</result>
+			<result name="add">/WEB-INF/jsp/portal/role/roleAdd.jsp</result>
 		</action>
 	</package>
 	

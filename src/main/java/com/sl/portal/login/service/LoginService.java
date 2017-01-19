@@ -8,6 +8,13 @@
 */  
   
 package com.sl.portal.login.service;  
+
+import com.sl.global.service.BaseService;
+import com.sl.portal.entity.hibernate.User;
+import com.sl.portal.user.dao.UserDao;
+import com.sl.wholesale.entity.hibernate.Goods;
+import com.sl.wholesale.goods.dao.GoodsDao;
+
 /** 
  * ClassName:LoginService <br/> 
  * Function: TODO ADD FUNCTION. <br/> 
@@ -18,7 +25,7 @@ package com.sl.portal.login.service;
  * @since    JDK 1.6 
  * @see       
  */
-public interface LoginService {
+public interface LoginService extends BaseService<User, UserDao>{
 
 }
   

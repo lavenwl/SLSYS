@@ -5,7 +5,7 @@
         <div class="container-fluid paper-wrap bevel tlbr" style="padding-top:0px;">
 			<%@include file="funcTree.jsp" %> 
             <!-- CONTENT --> 
-            <%@include file="../base/user/userList.jsp" %> 
+            <%@include file="../portal/user/userList.jsp" %> 
           <%@include file="foot.jsp" %> 
         </div>
     </div>

@@ -72,25 +72,15 @@ public class OrderDetailServiceImpl extends BaseServiceImpl<OrderDetail, OrderDe
 
 	@Override
 	public OrderDetail save(OrderDetail orderDetail) {
-		Long orderId = orderDetail.getOrder().getId();
-		Long goodsId = orderDetail.getGoods().getId();
-		Long saleModeId = orderDetail.getSaleMode().getId();
 		//处理内部bean对象
 		orderDetail.setOrder(orderService.queryById(orderDetail.getOrder().getId()));
-		orderDetail.setGoods(goodsService.queryById(goodsId));
-		orderDetail.setSaleMode(saleModeService.queryById(saleModeId));
 		return super.save(orderDetail);
 	}
 
 	@Override
 	public int update(OrderDetail orderDetail) {
-		Long orderId = orderDetail.getOrder().getId();
-		Long goodsId = orderDetail.getGoods().getId();
-		Long saleModeId = orderDetail.getSaleMode().getId();
 		//处理内部bean对象
 		orderDetail.setOrder(orderService.queryById(orderDetail.getOrder().getId()));
-		orderDetail.setGoods(goodsService.queryById(goodsId));
-		orderDetail.setSaleMode(saleModeService.queryById(saleModeId));
 		super.update(orderDetail);
 		return 1;
 	}
@@ -131,13 +121,7 @@ public class OrderDetailServiceImpl extends BaseServiceImpl<OrderDetail, OrderDe
 	public OrderDetail addTr(Long orderId) {
 		OrderDetail orderDetail = new OrderDetail();
 		String orderDetailCode = getNewOrderDetailCode(orderId);
-		orderDetail.setOrderDetailCode(orderDetailCode);
 		orderDetail.setOrder(orderService.queryById(orderId));
-		orderDetail.setGoods(goodsService.queryById(1));
-		orderDetail.setSaleMode(saleModeService.queryById(1));
-		orderDetail.setCreateDate(new Date());
-		orderDetail.setUpdateDate(new Date());
-		orderDetail.setState(1);
 		orderDetail = save(orderDetail);
 		return orderDetail;
 	}
